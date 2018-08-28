@@ -35,7 +35,7 @@ public class Pasien {
     }
 
     public void setNoRekamMedis(String noRekamMedis) throws Exception {
-        if (noRekamMedis.length() <= 11) {
+        if (noRekamMedis.length() > 6) {
             this.noRekamMedis = noRekamMedis;
         } else {
             throw new Exception("Nomor rekam Medis Salah");
@@ -80,7 +80,6 @@ public class Pasien {
         } else {
             throw new Exception("Input Tanggal Kurang Dari 0");
         }
-
     }
 
     public int getBulanLahir() {
