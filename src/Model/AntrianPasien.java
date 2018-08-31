@@ -79,16 +79,13 @@ public class AntrianPasien {
         }
     }
     /**
-     * 
+     * fungsi ini digunakan untuk memanggil nomor antrian pasien oeh dokter
      * @param nomorAntrian
      * @return 
      */
     public Pasien panggilPasien (int nomorAntrian){
-        if (this.nomorAntrian < JUMLAH_MAKSIMAL_PASIEN){
-            this.nomorAntrian = nomorAntrian;
-            
-        }
-        return null;
+        
+        return daftarPasien[nomorAntrian];
     }
 
 }
