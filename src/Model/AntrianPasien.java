@@ -65,8 +65,9 @@ public class AntrianPasien {
 
     /**
      * Fungsi ini digunakan untuk mendaftar pasien baru di nomor antrian
+     *
      * @param pasien
-     * @throws Exception 
+     * @throws Exception
      */
     public void Mendaftar(Pasien pasien) throws Exception {
         // nomor antrian dicek dengan jumlah maksimal pasien yang dilayani
@@ -78,14 +79,20 @@ public class AntrianPasien {
             throw new Exception("Antrian Penuh Bos");
         }
     }
+
     /**
      * fungsi ini digunakan untuk memanggil nomor antrian pasien oeh dokter
+     *
      * @param nomorAntrian
-     * @return 
+     * @return
      */
-    public Pasien panggilPasien (int nomorAntrian){
-        
-        return daftarPasien[nomorAntrian];
+    public Pasien panggilPasien(int nomorAntrian) throws Exception {
+        if (nomorAntrian < JUMLAH_MAKSIMAL_PASIEN) {
+            return daftarPasien[nomorAntrian];
+        } else {
+            throw new Exception("Antrian Habis Bos");
+        }
+
     }
 
 }
