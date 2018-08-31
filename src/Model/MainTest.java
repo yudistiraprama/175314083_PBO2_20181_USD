@@ -18,8 +18,10 @@ public class MainTest {
 
         Pasien pas1 = new Pasien("Prama");
         Dokter dok1 = new Dokter("Budiman");
+        AntrianPasien antri = new AntrianPasien();
 
         try {
+            
             pas1.setAlamat("Bantul");
             pas1.setTempatLahir("Bali");
             pas1.setTanggalLahir(22);
@@ -33,10 +35,14 @@ public class MainTest {
             dok1.setTanggalLahir(14);
             dok1.setBulanLahir(3);
             dok1.setTahunLahir(1975);
+            
+            antri.Mendaftar(pas1);
+            antri.panggilPasien(0);
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        
         System.out.println("--- PASIEN ---");
         System.out.println("Nama            : " + pas1.getNama());
         System.out.println("Alamat          : " + pas1.getAlamat());
@@ -51,6 +57,10 @@ public class MainTest {
         System.out.println("Alamat          : " + dok1.getAlamat());
         System.out.println("Tempet Lahir    : " + dok1.getTempatLahir());
         System.out.println("Tanggal Lahir   : " + dok1.getTanggalLahir() + "-" + dok1.getBulanLahir() + "-" + dok1.getTahunLahir());
+        System.out.println("");
+        
+        System.out.println("");
+     
 
     }
 }
