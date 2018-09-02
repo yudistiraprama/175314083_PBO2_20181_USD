@@ -86,12 +86,8 @@ public class AntrianPasien {
      * @param nomorAntrian
      * @return
      */
-    public Pasien panggilPasien(int nomorAntrian) throws Exception {
-        if (nomorAntrian < JUMLAH_MAKSIMAL_PASIEN) {
-            return daftarPasien[nomorAntrian];
-        } else {
-            throw new Exception("Antrian Habis Bos");
-        }
+    public Pasien panggilPasien(int nomorAntrian) {
+        return daftarPasien[nomorAntrian];
 
     }
 
