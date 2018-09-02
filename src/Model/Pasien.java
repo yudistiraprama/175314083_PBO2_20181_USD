@@ -22,34 +22,67 @@ public class Pasien {
     private int bulanLahir;
     private int tahunLahir;
 
+    /**
+     * constructor untuk mendeklarasikan objek pasien
+     */
     public Pasien() {
 
     }
 
+    /**
+     * constructor untuk mendeklarasikan objek pasien dengan parameter lokal nama dengan tipe data String
+     * @param nama 
+     */
     public Pasien(String nama) {
         this.nama = nama;
     }
 
+    /**
+     * method untuk mengambil nilai dari variabel noRekamMedis
+     * @return 
+     */
     public String getNoRekamMedis() {
+        //pengambalian nilai dari variabel noRekamMedis
         return noRekamMedis;
     }
 
+    /**
+     * method untuk meng-set nilai dari variabel noRekamMedis dengan variabel lokal noRekamMedis dengan tipe data String
+     * @param noRekamMedis
+     * @throws Exception 
+     */
     public void setNoRekamMedis(String noRekamMedis) throws Exception {
+        // pengecekan panjang karakter variabel noRekamMedis harus lebih dari 6 
         if (noRekamMedis.length() > 6) {
             this.noRekamMedis = noRekamMedis;
         } else {
+            // input noRekamMedis salah
             throw new Exception("Nomor rekam Medis Salah");
         }
     }
 
+    /**
+     * method untuk mengambil nilai dari variabel nama
+     * @return 
+     */
     public String getNama() {
+        // pengambalian nilai dari variabel nama
         return nama;
     }
 
+    /** 
+     * method untuk mengset nilai dari variabel nema dengan parameter lokal nama yang bertipe String
+     * @param nama 
+     */
     public void setNama(String nama) {
+        // pernyataan bahwa nilai dari variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getAlamat() {
         return alamat;
     }
@@ -111,6 +144,10 @@ public class Pasien {
         }
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String BuatNomorRekamMedis() {
         String nomorRekamMEdis;
         Date date = new Date();
@@ -118,5 +155,9 @@ public class Pasien {
         nomorRekamMEdis = ft.format(date) + nama.substring(0, 3);
         return nomorRekamMEdis;
     }
+    
+    /**
+     * 
+     */
 
 }
