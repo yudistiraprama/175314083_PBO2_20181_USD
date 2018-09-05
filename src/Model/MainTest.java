@@ -17,10 +17,15 @@ public class MainTest {
     public static void main(String[] args) {
 
         Pasien pas1 = new Pasien("Prama");
+        Pasien pas2 = new Pasien("Chaca");
         Dokter dok1 = new Dokter("Budiman");
         AntrianPasien antri = new AntrianPasien();
+        Klinik klinik = new Klinik();
 
         try {
+
+            klinik.setNama("KLINIK TONG FANG");
+            klinik.setIdKlinik("KTF.Far001");
 
             pas1.setAlamat("Bantul");
             pas1.setTempatLahir("Bali");
@@ -28,6 +33,13 @@ public class MainTest {
             pas1.setBulanLahir(4);
             pas1.setTahunLahir(1999);
             pas1.setNoRekamMedis(pas1.BuatNomorRekamMedis());
+
+            pas2.setAlamat("Gejayan");
+            pas2.setTempatLahir("Kalimantan");
+            pas2.setTanggalLahir(12);
+            pas2.setBulanLahir(8);
+            pas2.setTahunLahir(1999);
+            pas2.setNoRekamMedis(pas2.BuatNomorRekamMedis());
 
             dok1.setNomorPegawai("12345");
             dok1.setAlamat("Jogja");
@@ -37,18 +49,26 @@ public class MainTest {
             dok1.setTahunLahir(1975);
 
             antri.Mendaftar(pas1);
-            antri.panggilPasien(0);
+            antri.Mendaftar(pas2);
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        System.out.println(klinik.getNama());
+        System.out.println("ID Klinik : " + klinik.getIdKlinik());
+        System.out.println("");
 
-        System.out.println("--- PASIEN ---");
-        System.out.println("Nama            : " + pas1.getNama());
-        System.out.println("Alamat          : " + pas1.getAlamat());
-        System.out.println("Tempat Lahir    : " + pas1.getTempatLahir());
-        System.out.println("Tanggal Lahir   : " + pas1.getTanggalLahir() + "-" + pas1.getBulanLahir() + "-" + pas1.getTahunLahir());
-        System.out.println("No Rekam Medis  : " + pas1.getNoRekamMedis());
+        for (int i = 0; i < antri.getDaftarpasien().size(); i++) {
+            System.out.println("Antrian "+(i+1)+". "+ antri.getDaftarpasien().get(i).getNama());
+            System.out.println("");
+            
+            System.out.println("--- PASIEN ---");
+        System.out.println("Alamat          : " + antri.getDaftarpasien().get(i).getAlamat());
+        System.out.println("Tempat Lahir    : " + antri.getDaftarpasien().get(i).getTempatLahir());
+        System.out.println("Tanggal Lahir   : " + antri.getDaftarpasien().get(i).getTanggalLahir() + "-" 
+                + antri.getDaftarpasien().get(i).getBulanLahir() + "-" 
+                + antri.getDaftarpasien().get(i).getTahunLahir());
+        System.out.println("No Rekam Medis  : " + antri.getDaftarpasien().get(i).getNoRekamMedis());
         System.out.println("");
 
         System.out.println("--- DOKTER ---");
@@ -59,11 +79,10 @@ public class MainTest {
         System.out.println("Tanggal Lahir   : " + dok1.getTanggalLahir() + "-" + dok1.getBulanLahir() + "-" + dok1.getTahunLahir());
         System.out.println("");
 
-
-        System.out.println("Antrian " + antri.panggilPasien(0).getNama());
- 
-
         System.out.println("");
+        }
+
+        
 
     }
 }
