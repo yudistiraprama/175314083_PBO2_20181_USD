@@ -36,7 +36,7 @@ public class Pasien {
      * @param nama
      */
     public Pasien(String nama) {
-        // pernyataan bahwa nilain variabel nama sama dengan nilai dari variabel lokal nama
+        // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
     }
 
@@ -60,7 +60,7 @@ public class Pasien {
     public void setNoRekamMedis(String noRekamMedis) throws Exception {
         // pengecekan panjang karakter variabel noRekamMedis harus lebih dari 6 
         if (noRekamMedis.length() > 6) {
-            // pernyataan bahwa nilain variabel noRekamMedis sama dengan nilai dari variabel lokal noRekamMedis
+            // pernyataan bahwa nilai variabel noRekamMedis sama dengan nilai dari variabel lokal noRekamMedis
             this.noRekamMedis = noRekamMedis;
         } else {
             // pesan apabila input noRekamMedis salah
@@ -151,7 +151,7 @@ public class Pasien {
     public void setTanggalLahir(int tanggalLahir) throws Exception {
         //pengecekan nilai variabel lokal tanggalLahir harus lebih dari 0
         if (tanggalLahir > 0) {
-            //pengecekan nilai variabel lokal tanggalLahir harus kurang dari sama dengan 31
+            //pengecekan nilai variabel lokal tanggalLahir harus kurang dari atau sama dengan 31
             if (tanggalLahir <= 31) {
                 //pernyataan bahwa nilai dari variabel tanggalLahir sama dengan nilai dari variabel lokal tanggalLahir
                 this.tanggalLahir = tanggalLahir;
@@ -185,7 +185,7 @@ public class Pasien {
     public void setBulanLahir(int bulanLahir) throws Exception {
         //pengecekan nilai variabel lokal bulanLahir harus lebih dari 0
         if (bulanLahir > 0) {
-            //pengecekan nilai variabel lokal bulanLahir harus kurang dari sama dengan 12
+            //pengecekan nilai variabel lokal bulanLahir harus kurang dari atau sama dengan 12
             if (bulanLahir <= 12) {
                 //pernyataan bahwa nilai dari variabel bulanLahir sama dengan nilai dari variabel lokal bulanLahir
                 this.bulanLahir = bulanLahir;
@@ -206,6 +206,7 @@ public class Pasien {
      * @return
      */
     public int getTahunLahir() {
+        // pengambalian nilai dari variabel tahunLahir
         return tahunLahir;
     }
 
