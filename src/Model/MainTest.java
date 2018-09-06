@@ -58,17 +58,16 @@ public class MainTest {
         System.out.println("ID Klinik : " + klinik.getIdKlinik());
         System.out.println("");
 
-        for (int i = 0; i < antri.getDaftarpasien().size(); i++) {
-            System.out.println("Antrian "+(i+1)+". "+ antri.getDaftarpasien().get(i).getNama());
+        for (int i = 0; i < antri.getDaftarPasien().size(); i++) {
+            System.out.println("Antrian "+(i+1)+". "+ antri.getDaftarPasien().get(i).getNama());
             System.out.println("");
             
             System.out.println("--- PASIEN ---");
-        System.out.println("Alamat          : " + antri.getDaftarpasien().get(i).getAlamat());
-        System.out.println("Tempat Lahir    : " + antri.getDaftarpasien().get(i).getTempatLahir());
-        System.out.println("Tanggal Lahir   : " + antri.getDaftarpasien().get(i).getTanggalLahir() + "-" 
-                + antri.getDaftarpasien().get(i).getBulanLahir() + "-" 
-                + antri.getDaftarpasien().get(i).getTahunLahir());
-        System.out.println("No Rekam Medis  : " + antri.getDaftarpasien().get(i).getNoRekamMedis());
+        System.out.println("Tempat Lahir    : " + antri.getDaftarPasien().get(i).getTempatLahir());
+        System.out.println("Tanggal Lahir   : " + antri.getDaftarPasien().get(i).getTanggalLahir() + "-" 
+                + antri.getDaftarPasien().get(i).getBulanLahir() + "-" 
+                + antri.getDaftarPasien().get(i).getTahunLahir());
+        System.out.println("No Rekam Medis  : " + antri.getDaftarPasien().get(i).getNoRekamMedis());
         System.out.println("");
 
         System.out.println("--- DOKTER ---");
