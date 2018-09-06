@@ -32,6 +32,7 @@ public class Pasien {
     /**
      * constructor untuk mendeklarasikan objek pasien dengan parameter lokal
      * nama dengan tipe data String
+     *
      * @param nama
      */
     public Pasien(String nama) {
@@ -41,6 +42,7 @@ public class Pasien {
 
     /**
      * method untuk mengambil nilai dari variabel noRekamMedis
+     *
      * @return
      */
     public String getNoRekamMedis() {
@@ -58,7 +60,7 @@ public class Pasien {
     public void setNoRekamMedis(String noRekamMedis) throws Exception {
         // pengecekan panjang karakter variabel noRekamMedis harus lebih dari 6 
         if (noRekamMedis.length() > 6) {
-            // 
+            // pernyataan bahwa nilain variabel noRekamMedis sama dengan nilai dari variabel lokal noRekamMedis
             this.noRekamMedis = noRekamMedis;
         } else {
             // pesan apabila input noRekamMedis salah
