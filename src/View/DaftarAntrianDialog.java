@@ -9,6 +9,7 @@ import java.awt.Button;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -89,19 +90,64 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         ButtonGroup KelaminButonGroup = new ButtonGroup();
         KelaminButonGroup.add(lakiRadio);
         KelaminButonGroup.add(perempuanRadio);
-        
+
         tanggalalhirLabel = new JLabel("Tanggal Lahir");
         tanggalalhirLabel.setBounds(50, 150, 80, 20);
         this.add(tanggalalhirLabel);
-        
+
         tanggalCombo = new JComboBox();
         tanggalCombo.setBounds(150, 160, 80, 20);
+        tanggalCombo.setEnabled(true);
+        tanggalCombo.addItem(makeObj("1"));
+        tanggalCombo.addItem(makeObj("2"));
+        tanggalCombo.addItem(makeObj("3"));
+        tanggalCombo.addItem(makeObj("4"));
+        tanggalCombo.addItem(makeObj("5"));
+        tanggalCombo.addItem(makeObj("6"));
+        tanggalCombo.addItem(makeObj("7"));
+        tanggalCombo.addItem(makeObj("8"));
+        tanggalCombo.addItem(makeObj("9"));
+        tanggalCombo.addItem(makeObj("10"));
+        tanggalCombo.addItem(makeObj("11"));
+        tanggalCombo.addItem(makeObj("12"));
+        tanggalCombo.addItem(makeObj("13"));
+        tanggalCombo.addItem(makeObj("14"));
+        tanggalCombo.addItem(makeObj("15"));
+        tanggalCombo.addItem(makeObj("16"));
+        tanggalCombo.addItem(makeObj("17"));
+        tanggalCombo.addItem(makeObj("18"));
+        tanggalCombo.addItem(makeObj("19"));
+        tanggalCombo.addItem(makeObj("20"));
+        tanggalCombo.addItem(makeObj("21"));
+        tanggalCombo.addItem(makeObj("22"));
+        tanggalCombo.addItem(makeObj("23"));
+        tanggalCombo.addItem(makeObj("24"));
+        tanggalCombo.addItem(makeObj("25"));
+        tanggalCombo.addItem(makeObj("26"));
+        tanggalCombo.addItem(makeObj("27"));
+        tanggalCombo.addItem(makeObj("28"));
+        tanggalCombo.addItem(makeObj("29"));
+        tanggalCombo.addItem(makeObj("30"));
+        tanggalCombo.addItem(makeObj("31"));
+
         this.add(tanggalCombo);
-        
+
         bulanCombo = new JComboBox();
         bulanCombo.setBounds(250, 160, 80, 20);
+        bulanCombo.addItem(makeObj("1"));
+        bulanCombo.addItem(makeObj("2"));
+        bulanCombo.addItem(makeObj("3"));
+        bulanCombo.addItem(makeObj("4"));
+        bulanCombo.addItem(makeObj("5"));
+        bulanCombo.addItem(makeObj("6"));
+        bulanCombo.addItem(makeObj("7"));
+        bulanCombo.addItem(makeObj("8"));
+        bulanCombo.addItem(makeObj("9"));
+        bulanCombo.addItem(makeObj("10"));
+        bulanCombo.addItem(makeObj("11"));
+        bulanCombo.addItem(makeObj("12"));
         this.add(bulanCombo);
-        
+
         tahunCombo = new JComboBox();
         tahunCombo.setBounds(350, 160, 80, 20);
         this.add(tahunCombo);
@@ -135,6 +181,14 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         if (ae.getSource() == alamatText) {
             JOptionPane.showMessageDialog(null, alamatText.getText());
         }
-
     }
+
+    private Object makeObj(final String item) {
+        return new Object() {
+            public String toString() {
+                return item;
+            }
+        };
+    }
+
 }
