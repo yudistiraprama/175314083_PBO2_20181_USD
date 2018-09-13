@@ -167,6 +167,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         saveButton.setText("Save");
         saveButton.setBounds(150, 220, 80, 30);
         this.add(saveButton);
+        
+        saveButton.addActionListener(this);
 
     }
 
@@ -180,6 +182,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         }
         if (ae.getSource() == alamatText) {
             JOptionPane.showMessageDialog(null, alamatText.getText());
+        }if (ae.getSource() == saveButton) {
+            JOptionPane.showMessageDialog(null, "Data Telah Disimpan");
         }
     }
 

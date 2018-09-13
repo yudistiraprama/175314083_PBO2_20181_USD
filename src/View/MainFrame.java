@@ -16,7 +16,7 @@ import javax.swing.JMenuItem;
  *
  * @author jarkom
  */
-public class MainFrame extends JFrame implements ActionListener{
+public class MainFrame extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu fileMenu;
@@ -34,17 +34,27 @@ public class MainFrame extends JFrame implements ActionListener{
         this.setTitle("Main Frame");
         fileMenu = new JMenu("File");
         exitMenuItem = new JMenuItem("Exit");
+        fileMenuItem = new JMenuItem("File");
         fileMenu.add(exitMenuItem);
+        fileMenu.add(fileMenuItem);
         menuBar.add(fileMenu);
 
         this.setJMenuBar(menuBar);
+
+        fileMenuItem.addActionListener(this);
+        exitMenuItem.addActionListener(this);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == exitMenuItem){
+        if (ae.getSource() == exitMenuItem) {
             System.exit(0);
+        }
+        if (ae.getSource() == fileMenuItem) {
+            DaftarAntrianDialog test = new DaftarAntrianDialog("ANTRIAN PASIEN");
+            test.setSize(600, 500);
+            test.setVisible(true);
         }
     }
 }
