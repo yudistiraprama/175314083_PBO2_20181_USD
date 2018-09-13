@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,11 +16,12 @@ import javax.swing.JMenuItem;
  *
  * @author jarkom
  */
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ActionListener{
 
     private JMenuBar menuBar;
     private JMenu fileMenu;
     private JMenuItem exitMenuItem;
+    private JMenuItem fileMenuItem;
 
     public MainFrame() {
         init();
@@ -36,5 +39,12 @@ public class MainFrame extends JFrame {
 
         this.setJMenuBar(menuBar);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource() == exitMenuItem){
+            System.exit(0);
+        }
     }
 }

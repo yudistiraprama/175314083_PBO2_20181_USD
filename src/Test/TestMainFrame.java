@@ -14,7 +14,7 @@ import View.MainFrame;
 public class TestMainFrame {
     public static void main(String[] args) {
         MainFrame test = new MainFrame();
-        test.setSize(300, 400);
+        test.setSize(500, 400);
         test.setVisible(true);
     }
 }
