@@ -32,7 +32,9 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     private JTextField namaText;
     private JTextField noRMText;
     private JTextField alamatText;
-    private JComboBox TanggallahirCombo;
+    private JComboBox tanggalCombo;
+    private JComboBox bulanCombo;
+    private JComboBox tahunCombo;
     private JButton saveButton;
     private JRadioButton lakiRadio;
     private JRadioButton perempuanRadio;
@@ -61,7 +63,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         this.add(noRMLabel);
 
         noRMText = new JTextField();
-        noRMText.setBounds(130, 70, 120, 20);
+        noRMText.setBounds(150, 70, 120, 20);
         this.add(noRMText);
 
         noRMText.addActionListener(this);
@@ -72,16 +74,16 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         this.add(namaLabel);
 
         namaText = new JTextField();
-        namaText.setBounds(130, 100, 120, 20);
+        namaText.setBounds(150, 100, 120, 20);
         this.add(namaText);
 
         namaText.addActionListener(this);
         lakiRadio = new JRadioButton("Laki-laki");
-        lakiRadio.setBounds(130, 130, 100, 20);
+        lakiRadio.setBounds(150, 130, 80, 20);
         this.add(lakiRadio);
 
         perempuanRadio = new JRadioButton("Perempuan");
-        perempuanRadio.setBounds(210, 130, 100, 20);
+        perempuanRadio.setBounds(230, 130, 100, 20);
         this.add(perempuanRadio);
 
         ButtonGroup KelaminButonGroup = new ButtonGroup();
@@ -91,21 +93,33 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         tanggalalhirLabel = new JLabel("Tanggal Lahir");
         tanggalalhirLabel.setBounds(50, 150, 80, 20);
         this.add(tanggalalhirLabel);
+        
+        tanggalCombo = new JComboBox();
+        tanggalCombo.setBounds(150, 160, 80, 20);
+        this.add(tanggalCombo);
+        
+        bulanCombo = new JComboBox();
+        bulanCombo.setBounds(250, 160, 80, 20);
+        this.add(bulanCombo);
+        
+        tahunCombo = new JComboBox();
+        tahunCombo.setBounds(350, 160, 80, 20);
+        this.add(tahunCombo);
 
         alamatLabel = new JLabel();
         alamatLabel.setText("Alamat");
-        alamatLabel.setBounds(50, 180, 80, 20);
+        alamatLabel.setBounds(50, 190, 80, 20);
         this.add(alamatLabel);
 
         alamatText = new JTextField();
-        alamatText.setBounds(130, 180, 120, 20);
+        alamatText.setBounds(150, 190, 120, 20);
         this.add(alamatText);
 
         alamatText.addActionListener(this);
 
         saveButton = new JButton();
         saveButton.setText("Save");
-        saveButton.setBounds(130, 200, 80, 30);
+        saveButton.setBounds(150, 220, 80, 30);
         this.add(saveButton);
 
     }
