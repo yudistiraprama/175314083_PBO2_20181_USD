@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Pasien;
 import java.awt.Button;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JComboBox tanggalCombo;
     private JComboBox bulanCombo;
     private JComboBox tahunCombo;
-    private JButton saveButton;
+    private JButton tambahButton;
     private JRadioButton lakiRadio;
     private JRadioButton perempuanRadio;
 
@@ -163,12 +164,12 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
 
         alamatText.addActionListener(this);
 
-        saveButton = new JButton();
-        saveButton.setText("Save");
-        saveButton.setBounds(150, 220, 80, 30);
-        this.add(saveButton);
+        tambahButton = new JButton();
+        tambahButton.setText("Tambah");
+        tambahButton.setBounds(150, 220, 80, 30);
+        this.add(tambahButton);
         
-        saveButton.addActionListener(this);
+        tambahButton.addActionListener(this);
 
     }
 
@@ -182,8 +183,14 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         }
         if (ae.getSource() == alamatText) {
             JOptionPane.showMessageDialog(null, alamatText.getText());
-        }if (ae.getSource() == saveButton) {
-            JOptionPane.showMessageDialog(null, "Data Telah Disimpan");
+        }if (ae.getSource() == tambahButton) {
+            Pasien baru = new Pasien();
+            baru.setNama(namaText.getText());
+            baru.setAlamat(alamatText.getText());
+            
+            Pasien.tambahPasienBaru(baru);
+            
+            JOptionPane.showMessageDialog(null, "Data Telah Ditambahkan");
         }
     }
 
