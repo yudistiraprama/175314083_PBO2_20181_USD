@@ -14,7 +14,7 @@ import View.TambahPasienBaruDialog;
 public class testTambahPasienBaruDialog {
     public static void main(String[] args) {
         TambahPasienBaruDialog test = new TambahPasienBaruDialog();
-        test.setSize(300, 400);
+        test.setSize(600, 400);
         test.setVisible(true);
     }
 }

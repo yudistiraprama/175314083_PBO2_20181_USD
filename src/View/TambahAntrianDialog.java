@@ -30,15 +30,10 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JLabel namaLabel;
     private JLabel noRMLabel;
     private JLabel alamatLabel;
-    private JLabel tanggalalhirLabel;
     private JTextField namaText;
     private JTextField noRMText;
     private JTextField alamatText;
-    private JComboBox tanggalCombo;
-    private JComboBox bulanCombo;
-    private JComboBox tahunCombo;
     private JButton tambahButton;
-
 
     public TambahAntrianDialog() {
         init();
@@ -67,8 +62,6 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         noRMText.setBounds(150, 70, 120, 20);
         this.add(noRMText);
 
-        noRMText.addActionListener(this);
-
         namaLabel = new JLabel();
         namaLabel.setText("Nama");
         namaLabel.setBounds(50, 100, 80, 20);
@@ -78,41 +71,23 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         namaText.setBounds(150, 100, 120, 20);
         this.add(namaText);
 
-        namaText.addActionListener(this);
-
-        tanggalalhirLabel = new JLabel("Tanggal Lahir");
-        tanggalalhirLabel.setBounds(50, 150, 80, 20);
-        this.add(tanggalalhirLabel);
-
-        tanggalCombo = new JComboBox();
-        tanggalCombo.setBounds(150, 160, 80, 20);
-        this.add(tanggalCombo);
-
-        bulanCombo = new JComboBox();
-        bulanCombo.setBounds(250, 160, 80, 20);
- 
-        this.add(bulanCombo);
-
-        tahunCombo = new JComboBox();
-        tahunCombo.setBounds(350, 160, 80, 20);
-        this.add(tahunCombo);
-
         alamatLabel = new JLabel();
         alamatLabel.setText("Alamat");
-        alamatLabel.setBounds(50, 190, 80, 20);
+        alamatLabel.setBounds(50, 130, 80, 20);
         this.add(alamatLabel);
 
         alamatText = new JTextField();
-        alamatText.setBounds(150, 190, 120, 20);
+        alamatText.setBounds(150, 130, 120, 20);
         this.add(alamatText);
-
-        alamatText.addActionListener(this);
 
         tambahButton = new JButton();
         tambahButton.setText("Tambah");
-        tambahButton.setBounds(150, 220, 80, 30);
+        tambahButton.setBounds(150, 180, 80, 30);
         this.add(tambahButton);
-        
+
+        noRMText.addActionListener(this);
+        namaText.addActionListener(this);
+        alamatText.addActionListener(this);
         tambahButton.addActionListener(this);
 
     }
@@ -121,27 +96,13 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == noRMText) {
             Pasien cari = Pasien.cariPasien(noRMText.getText());
-            if (cari == null){
-                JOptionPane.showConfirmDialog(null, "Orang Tidak Ada");
-            }else{
+            if (cari != null) {
                 namaText.setText(cari.getNama());
+                alamatText.setText(cari.getAlamat());
             }
         }
-        if (ae.getSource() == namaText) {
-            JOptionPane.showMessageDialog(null, namaText.getText());
-        }
-        if (ae.getSource() == alamatText) {
-            JOptionPane.showMessageDialog(null, alamatText.getText());
-        }if (ae.getSource() == tambahButton) {
-            Pasien baru = new Pasien();
-            baru.setNama(namaText.getText());
-            baru.setAlamat(alamatText.getText());
-            
-            Pasien.tambahPasienBaru(baru);
-            
-            JOptionPane.showMessageDialog(null, "Data Telah Ditambahkan");
+        if (ae.getSource() == tambahButton) {
+            JOptionPane.showMessageDialog(null, "Antrian Ditambahkan");
         }
     }
-
-
 }
