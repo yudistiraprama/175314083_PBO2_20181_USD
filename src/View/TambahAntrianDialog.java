@@ -23,7 +23,7 @@ import javax.swing.JTextField;
  *
  * @author jarkom
  */
-public class DaftarAntrianDialog extends JDialog implements ActionListener {
+public class TambahAntrianDialog extends JDialog implements ActionListener {
 
     private JLabel judulLabel;
     private JLabel namaLabel;
@@ -40,11 +40,11 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     private JRadioButton lakiRadio;
     private JRadioButton perempuanRadio;
 
-    public DaftarAntrianDialog() {
+    public TambahAntrianDialog() {
         init();
     }
 
-    public DaftarAntrianDialog(String title) {
+    public TambahAntrianDialog(String title) {
         this.setTitle(title);
         init();
     }

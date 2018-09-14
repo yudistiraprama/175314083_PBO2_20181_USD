@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author jarkom
  */
-public class DaftarPasienBaruDialog extends JDialog {
+public class TambahPasienBaruDialog extends JDialog {
 
     private JLabel judulLabel;
     private JLabel namaLabel;
@@ -24,11 +24,11 @@ public class DaftarPasienBaruDialog extends JDialog {
     private JTextField alamatText;
     private JButton saveButton;
 
-    public DaftarPasienBaruDialog() {
+    public TambahPasienBaruDialog() {
         init();
     }
 
-    public DaftarPasienBaruDialog(String title) {
+    public TambahPasienBaruDialog(String title) {
         this.setTitle(title);
         init();
     }

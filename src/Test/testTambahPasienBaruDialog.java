@@ -5,18 +5,16 @@
  */
 package Test;
 
-import View.DaftarAntrianDialog;
+import View.TambahPasienBaruDialog;
 
 /**
  *
  * @author jarkom
  */
-public class testDaftarAntrianDialog {
+public class testTambahPasienBaruDialog {
     public static void main(String[] args) {
-        DaftarAntrianDialog test = new DaftarAntrianDialog("ANTRIAN PASIEN");
-        test.setSize(600, 500);
+        TambahPasienBaruDialog test = new TambahPasienBaruDialog();
+        test.setSize(300, 400);
         test.setVisible(true);
-        
-       
     }
 }

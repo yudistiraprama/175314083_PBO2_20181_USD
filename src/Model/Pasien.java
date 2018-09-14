@@ -6,6 +6,7 @@
 package Model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,6 +22,8 @@ public class Pasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
+    private String nik;
+    public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
      * constructor untuk mendeklarasikan objek pasien
@@ -38,6 +41,17 @@ public class Pasien {
     public Pasien(String nama) {
         // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
+    }
+    
+    public Pasien(String nama, String Alamat, String tempatLahir, int tanggal, int bulan, int tahun, String nik) {
+        // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
+        this.nama = nama;
+        this.alamat = alamat;
+        this.tempatLahir = tempatLahir;
+        this.tanggalLahir = tanggal;
+        this.bulanLahir = bulan;
+        this.tahunLahir = tahun;
+        this.nik = nik;
     }
 
     /**
@@ -245,6 +259,27 @@ public class Pasien {
         nomorRekamMEdis = ft.format(date) + nama.substring(0, 3);
         //pengembalian nilai variabel nomorRekamMedis
         return nomorRekamMEdis;
+    }
+
+    public String getNik() {
+        return noRekamMedis;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+    
+    
+
+    public static void tambahPasienBaru(Pasien pasien) {
+        Pasien.daftarPasien.add(pasien);
+
+    }
+
+    public static Pasien cariPasien(String NoRM) {
+        
+
+        return null;
     }
 
 }

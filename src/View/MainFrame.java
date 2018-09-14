@@ -19,9 +19,10 @@ import javax.swing.JMenuItem;
 public class MainFrame extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
-    private JMenu fileMenu;
+    private JMenu pasienMenu;
+    private JMenuItem tambahPasienMenuItem;
+    private JMenuItem tambahAntrianMenuItem;
     private JMenuItem exitMenuItem;
-    private JMenuItem fileMenuItem;
 
     public MainFrame() {
         init();
@@ -32,29 +33,39 @@ public class MainFrame extends JFrame implements ActionListener {
         menuBar = new JMenuBar();
 
         this.setTitle("Main Frame");
-        fileMenu = new JMenu("File");
+        pasienMenu = new JMenu("Pasien");
+        tambahPasienMenuItem = new JMenuItem("Tambah Pasien");
+        tambahAntrianMenuItem = new JMenuItem("Tambah Antrian");
         exitMenuItem = new JMenuItem("Exit");
-        fileMenuItem = new JMenuItem("File");
-        fileMenu.add(exitMenuItem);
-        fileMenu.add(fileMenuItem);
-        menuBar.add(fileMenu);
+
+        menuBar.add(pasienMenu);
+        pasienMenu.add(tambahPasienMenuItem);
+        pasienMenu.add(tambahAntrianMenuItem);
+        pasienMenu.add(exitMenuItem);
 
         this.setJMenuBar(menuBar);
 
-        fileMenuItem.addActionListener(this);
+        tambahPasienMenuItem.addActionListener(this);
+        tambahAntrianMenuItem.addActionListener(this);
         exitMenuItem.addActionListener(this);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == exitMenuItem) {
-            System.exit(0);
-        }
-        if (ae.getSource() == fileMenuItem) {
-            DaftarAntrianDialog test = new DaftarAntrianDialog("ANTRIAN PASIEN");
+        if (ae.getSource() == tambahPasienMenuItem) {
+            TambahPasienBaruDialog test = new TambahPasienBaruDialog("FORM TAMBAH PASIEN");
             test.setSize(600, 500);
             test.setVisible(true);
+        }
+
+        if (ae.getSource() == tambahAntrianMenuItem) {
+            TambahAntrianDialog test = new TambahAntrianDialog("FORM TAMBAH ANTRIAN");
+            test.setSize(600, 500);
+            test.setVisible(true);
+        }
+        if (ae.getSource() == exitMenuItem) {
+            System.exit(0);
         }
     }
 }
