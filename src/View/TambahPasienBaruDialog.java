@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,12 +30,16 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
     private JLabel namaLabel;
     private JLabel alamatLabel;
     private JLabel nikLabel;
+    private JLabel tanggalalhirLabel;
     private JTextField namaText;
     private JTextField alamatText;
     private JTextField nikText;
     private JRadioButton lakiRadio;
     private JRadioButton perempuanRadio;
-    private JButton saveButton;
+    private JComboBox tanggalCombo;
+    private JComboBox bulanCombo;
+    private JComboBox tahunCombo;
+    private JButton tambahButton;
 
     public TambahPasienBaruDialog() {
         init();
@@ -60,60 +65,73 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         this.add(namaLabel);
 
         namaText = new JTextField();
-        namaText.setBounds(110, 90, 120, 20);
+        namaText.setBounds(130, 90, 120, 20);
         this.add(namaText);
-        
+
         lakiRadio = new JRadioButton("Laki-laki");
-        lakiRadio.setBounds(110, 120, 80, 20);
+        lakiRadio.setBounds(130, 120, 80, 20);
         this.add(lakiRadio);
 
         perempuanRadio = new JRadioButton("Perempuan");
-        perempuanRadio.setBounds(150, 120, 100, 20);
+        perempuanRadio.setBounds(220, 120, 100, 20);
         this.add(perempuanRadio);
 
         ButtonGroup KelaminButonGroup = new ButtonGroup();
         KelaminButonGroup.add(lakiRadio);
         KelaminButonGroup.add(perempuanRadio);
 
+        tanggalalhirLabel = new JLabel("Tgl Lahir");
+        tanggalalhirLabel.setBounds(50, 150, 80, 20);
+        this.add(tanggalalhirLabel);
+
+        tanggalCombo = new JComboBox();
+        tanggalCombo.setBounds(130, 150, 80, 20);
+        this.add(tanggalCombo);
+
+        bulanCombo = new JComboBox();
+        bulanCombo.setBounds(230, 150, 80, 20);
+
+        this.add(bulanCombo);
+
+        tahunCombo = new JComboBox();
+        tahunCombo.setBounds(330, 150, 80, 20);
+        this.add(tahunCombo);
+
         alamatLabel = new JLabel();
         alamatLabel.setText("Alamat");
-        alamatLabel.setBounds(50, 150, 80, 20);
+        alamatLabel.setBounds(50, 180, 80, 20);
         this.add(alamatLabel);
 
         alamatText = new JTextField();
-        alamatText.setBounds(110, 150, 120, 20);
+        alamatText.setBounds(130, 180, 120, 20);
         this.add(alamatText);
 
         nikLabel = new JLabel();
         nikLabel.setText("NIK");
-        nikLabel.setBounds(50, 180, 80, 20);
+        nikLabel.setBounds(50, 210, 80, 20);
         this.add(nikLabel);
 
         nikText = new JTextField();
-        nikText.setBounds(110, 180, 120, 20);
+        nikText.setBounds(130, 210, 120, 20);
         this.add(nikText);
 
-        saveButton = new JButton();
-        saveButton.setText("Save");
-        saveButton.setBounds(110, 200, 80, 30);
-        this.add(saveButton);
+        tambahButton = new JButton();
+        tambahButton.setText("Tambah");
+        tambahButton.setBounds(130, 240, 80, 30);
+        this.add(tambahButton);
 
-        saveButton.addActionListener(this);
+        tambahButton.addActionListener(this);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == saveButton) {
+        if (e.getSource() == tambahButton) {
             Pasien baru = new Pasien();
             baru.setNama(namaText.getText());
             baru.setAlamat(alamatText.getText());
-            baru.setNik(nikText.getText());
-            try {
-                baru.setNoRekamMedis(nikText.getText());
-            } catch (Exception ex) {
-                Logger.getLogger(TambahPasienBaruDialog.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            baru.setNoRekamMedis(nikText.getText());
+
             Pasien.tambahPasienBaru(baru);
 
             JOptionPane.showMessageDialog(null, "Data Telah Ditambahkan");
