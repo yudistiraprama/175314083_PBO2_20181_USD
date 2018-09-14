@@ -22,6 +22,7 @@ public class Pasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
+    private String nik;
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
@@ -43,14 +44,13 @@ public class Pasien {
     }
 
     public Pasien(String nama, String Alamat, String tempatLahir, int tanggal, int bulan, int tahun, String nik) {
-        // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
         this.alamat = alamat;
         this.tempatLahir = tempatLahir;
         this.tanggalLahir = tanggal;
         this.bulanLahir = bulan;
         this.tahunLahir = tahun;
-        this.noRekamMedis = nik;
+        this.nik = nik;
     }
 
     /**
@@ -60,7 +60,7 @@ public class Pasien {
      */
     public String getNoRekamMedis() {
         //pengambalian nilai dari variabel noRekamMedis
-        return noRekamMedis;
+        return noRekamMedis = nik;
     }
 
     public void setNoRekamMedis(String noRekamMedis) {
@@ -264,6 +264,14 @@ public class Pasien {
         return nomorRekamMEdis;
     }
 
+    public String getNik() {
+        return nik = noRekamMedis;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
     public static void tambahPasienBaru(Pasien pasien) {
         Pasien.daftarPasien.add(pasien);
 
@@ -275,7 +283,6 @@ public class Pasien {
                 return daftarPasien.get(i);
             }
         }
-
         return null;
     }
 

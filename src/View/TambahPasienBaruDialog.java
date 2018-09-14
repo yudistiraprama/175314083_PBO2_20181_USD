@@ -54,7 +54,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         this.setLayout(null);
 
         judulLabel = new JLabel();
-        judulLabel.setText("Form Daftar Pasien Baru");
+        judulLabel.setText("FORM DAFTAR PASIEN BARU");
         judulLabel.setFont(new Font(null, Font.CENTER_BASELINE, 16));
         judulLabel.setBounds(50, 20, 250, 50);
         this.add(judulLabel);
@@ -90,7 +90,6 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
 
         bulanCombo = new JComboBox();
         bulanCombo.setBounds(230, 150, 80, 20);
-
         this.add(bulanCombo);
 
         tahunCombo = new JComboBox();
@@ -130,7 +129,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
             Pasien baru = new Pasien();
             baru.setNama(namaText.getText());
             baru.setAlamat(alamatText.getText());
-            baru.setNoRekamMedis(nikText.getText());
+            baru.setNik(nikText.getText());
 
             Pasien.tambahPasienBaru(baru);
 
