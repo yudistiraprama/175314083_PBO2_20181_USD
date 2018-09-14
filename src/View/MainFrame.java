@@ -58,11 +58,10 @@ public class MainFrame extends JFrame implements ActionListener {
             test.setSize(600, 500);
             test.setVisible(true);
         }
-
         if (ae.getSource() == tambahAntrianMenuItem) {
-            TambahAntrianDialog test = new TambahAntrianDialog("FORM TAMBAH ANTRIAN");
-            test.setSize(600, 500);
-            test.setVisible(true);
+            TambahAntrianDialog test1 = new TambahAntrianDialog("FORM TAMBAH ANTRIAN");
+            test1.setSize(600, 500);
+            test1.setVisible(true);
         }
         if (ae.getSource() == exitMenuItem) {
             System.exit(0);

@@ -22,7 +22,6 @@ public class Pasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
-    private String nik;
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
@@ -50,7 +49,7 @@ public class Pasien {
         this.tanggalLahir = tanggal;
         this.bulanLahir = bulan;
         this.tahunLahir = tahun;
-        this.nik = nik;
+        this.noRekamMedis = nik;
     }
 
     /**
@@ -60,7 +59,7 @@ public class Pasien {
      */
     public String getNoRekamMedis() {
         //pengambalian nilai dari variabel noRekamMedis
-        return noRekamMedis = nik;
+        return noRekamMedis;
     }
 
     public void setNoRekamMedis(String noRekamMedis) {
@@ -264,16 +263,8 @@ public class Pasien {
         return nomorRekamMEdis;
     }
 
-    public String getNik() {
-        return nik = noRekamMedis;
-    }
-
-    public void setNik(String nik) {
-        this.nik = nik;
-    }
-
     public static void tambahPasienBaru(Pasien pasien) {
-        Pasien.daftarPasien.add(pasien);
+        daftarPasien.add(pasien);
 
     }
 
