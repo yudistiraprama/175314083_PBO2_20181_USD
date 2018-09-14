@@ -38,8 +38,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JComboBox bulanCombo;
     private JComboBox tahunCombo;
     private JButton tambahButton;
-    private JRadioButton lakiRadio;
-    private JRadioButton perempuanRadio;
+
 
     public TambahAntrianDialog() {
         init();
@@ -80,17 +79,6 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         this.add(namaText);
 
         namaText.addActionListener(this);
-        lakiRadio = new JRadioButton("Laki-laki");
-        lakiRadio.setBounds(150, 130, 80, 20);
-        this.add(lakiRadio);
-
-        perempuanRadio = new JRadioButton("Perempuan");
-        perempuanRadio.setBounds(230, 130, 100, 20);
-        this.add(perempuanRadio);
-
-        ButtonGroup KelaminButonGroup = new ButtonGroup();
-        KelaminButonGroup.add(lakiRadio);
-        KelaminButonGroup.add(perempuanRadio);
 
         tanggalalhirLabel = new JLabel("Tanggal Lahir");
         tanggalalhirLabel.setBounds(50, 150, 80, 20);
@@ -98,55 +86,11 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
 
         tanggalCombo = new JComboBox();
         tanggalCombo.setBounds(150, 160, 80, 20);
-        tanggalCombo.setEnabled(true);
-        tanggalCombo.addItem(makeObj("1"));
-        tanggalCombo.addItem(makeObj("2"));
-        tanggalCombo.addItem(makeObj("3"));
-        tanggalCombo.addItem(makeObj("4"));
-        tanggalCombo.addItem(makeObj("5"));
-        tanggalCombo.addItem(makeObj("6"));
-        tanggalCombo.addItem(makeObj("7"));
-        tanggalCombo.addItem(makeObj("8"));
-        tanggalCombo.addItem(makeObj("9"));
-        tanggalCombo.addItem(makeObj("10"));
-        tanggalCombo.addItem(makeObj("11"));
-        tanggalCombo.addItem(makeObj("12"));
-        tanggalCombo.addItem(makeObj("13"));
-        tanggalCombo.addItem(makeObj("14"));
-        tanggalCombo.addItem(makeObj("15"));
-        tanggalCombo.addItem(makeObj("16"));
-        tanggalCombo.addItem(makeObj("17"));
-        tanggalCombo.addItem(makeObj("18"));
-        tanggalCombo.addItem(makeObj("19"));
-        tanggalCombo.addItem(makeObj("20"));
-        tanggalCombo.addItem(makeObj("21"));
-        tanggalCombo.addItem(makeObj("22"));
-        tanggalCombo.addItem(makeObj("23"));
-        tanggalCombo.addItem(makeObj("24"));
-        tanggalCombo.addItem(makeObj("25"));
-        tanggalCombo.addItem(makeObj("26"));
-        tanggalCombo.addItem(makeObj("27"));
-        tanggalCombo.addItem(makeObj("28"));
-        tanggalCombo.addItem(makeObj("29"));
-        tanggalCombo.addItem(makeObj("30"));
-        tanggalCombo.addItem(makeObj("31"));
-
         this.add(tanggalCombo);
 
         bulanCombo = new JComboBox();
         bulanCombo.setBounds(250, 160, 80, 20);
-        bulanCombo.addItem(makeObj("1"));
-        bulanCombo.addItem(makeObj("2"));
-        bulanCombo.addItem(makeObj("3"));
-        bulanCombo.addItem(makeObj("4"));
-        bulanCombo.addItem(makeObj("5"));
-        bulanCombo.addItem(makeObj("6"));
-        bulanCombo.addItem(makeObj("7"));
-        bulanCombo.addItem(makeObj("8"));
-        bulanCombo.addItem(makeObj("9"));
-        bulanCombo.addItem(makeObj("10"));
-        bulanCombo.addItem(makeObj("11"));
-        bulanCombo.addItem(makeObj("12"));
+ 
         this.add(bulanCombo);
 
         tahunCombo = new JComboBox();
@@ -176,7 +120,12 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == noRMText) {
-            JOptionPane.showMessageDialog(null, noRMText.getText());
+            Pasien cari = Pasien.cariPasien(noRMText.getText());
+            if (cari == null){
+                JOptionPane.showConfirmDialog(null, "Orang Tidak Ada");
+            }else{
+                namaText.setText(cari.getNama());
+            }
         }
         if (ae.getSource() == namaText) {
             JOptionPane.showMessageDialog(null, namaText.getText());
@@ -194,12 +143,5 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         }
     }
 
-    private Object makeObj(final String item) {
-        return new Object() {
-            public String toString() {
-                return item;
-            }
-        };
-    }
 
 }

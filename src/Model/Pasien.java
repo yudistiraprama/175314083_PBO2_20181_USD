@@ -42,7 +42,7 @@ public class Pasien {
         // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
     }
-    
+
     public Pasien(String nama, String Alamat, String tempatLahir, int tanggal, int bulan, int tahun, String nik) {
         // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
@@ -73,13 +73,14 @@ public class Pasien {
      */
     public void setNoRekamMedis(String noRekamMedis) throws Exception {
         // pengecekan panjang karakter variabel noRekamMedis harus lebih dari 6 
-        if (noRekamMedis.length() > 6) {
-            // pernyataan bahwa nilai variabel noRekamMedis sama dengan nilai dari variabel lokal noRekamMedis
-            this.noRekamMedis = noRekamMedis;
-        } else {
-            // pesan apabila input noRekamMedis salah
-            throw new Exception("Nomor rekam Medis Salah");
-        }
+//        if (noRekamMedis.length() > 6) {
+//            // pernyataan bahwa nilai variabel noRekamMedis sama dengan nilai dari variabel lokal noRekamMedis
+//            this.noRekamMedis = noRekamMedis;
+//        } else {
+//            // pesan apabila input noRekamMedis salah
+//            throw new Exception("Nomor rekam Medis Salah");
+//        }
+        this.noRekamMedis = noRekamMedis;
     }
 
     /**
@@ -262,14 +263,12 @@ public class Pasien {
     }
 
     public String getNik() {
-        return noRekamMedis;
+        return nik;
     }
 
     public void setNik(String nik) {
         this.nik = nik;
     }
-    
-    
 
     public static void tambahPasienBaru(Pasien pasien) {
         Pasien.daftarPasien.add(pasien);
@@ -277,7 +276,11 @@ public class Pasien {
     }
 
     public static Pasien cariPasien(String NoRM) {
-        
+        for (int i = 0; i < daftarPasien.size(); i++) {
+            if (daftarPasien.get(i).getNik() == NoRM) {
+                return daftarPasien.get(i);
+            }
+        }
 
         return null;
     }
