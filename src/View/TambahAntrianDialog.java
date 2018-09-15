@@ -101,6 +101,8 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
             for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
                 if (cari == Pasien.daftarPasien.get(i)) {
                     JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
+                    
+                    this.dispose();
                 }
             }
         }
