@@ -28,16 +28,29 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
     private JLabel namaLabel;
     private JLabel alamatLabel;
     private JLabel nikLabel;
-    private JLabel tanggalalhirLabel;
+    private JLabel tanggallahirLabel;
     private JTextField namaText;
     private JTextField alamatText;
     private JTextField nikText;
     private JRadioButton lakiRadio;
     private JRadioButton perempuanRadio;
+    private JLabel tanggalLabel;
+    private JLabel bulanLabel;
+    private JLabel tahunLabel;
     private JComboBox tanggalCombo;
     private JComboBox bulanCombo;
     private JComboBox tahunCombo;
     private JButton tambahButton;
+    private String tanggalArray[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "11", "12", "13", "14", "15", "16", "17", "18",
+        "19", "20", "21", "22", "23", "24", "25", "26", "27",
+        "28", "29", "30", "31"};
+    private String bulanArray[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "11", "12"};
+    private String tahunArray[] = {"1970", "1971", "1972", "1973", "1974", "1975",
+        "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985",
+        "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994",
+        "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002"};
 
     public TambahPasienBaruDialog() {
         init();
@@ -78,43 +91,55 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         KelaminButonGroup.add(lakiRadio);
         KelaminButonGroup.add(perempuanRadio);
 
-        tanggalalhirLabel = new JLabel("Tgl Lahir");
-        tanggalalhirLabel.setBounds(50, 150, 80, 20);
-        this.add(tanggalalhirLabel);
+        tanggallahirLabel = new JLabel("Tanggal Lahir");
+        tanggallahirLabel.setBounds(50, 180, 80, 20);
+        this.add(tanggallahirLabel);
 
-        tanggalCombo = new JComboBox();
-        tanggalCombo.setBounds(130, 150, 80, 20);
+        tanggalLabel = new JLabel("Tanggal");
+        tanggalLabel.setBounds(130, 150, 80, 20);
+        this.add(tanggalLabel);
+
+        tanggalCombo = new JComboBox(tanggalArray);
+        tanggalCombo.setBounds(130, 180, 80, 20);
         this.add(tanggalCombo);
 
-        bulanCombo = new JComboBox();
-        bulanCombo.setBounds(230, 150, 80, 20);
+        bulanLabel = new JLabel("Bulan");
+        bulanLabel.setBounds(230, 150, 80, 20);
+        this.add(bulanLabel);
+
+        bulanCombo = new JComboBox(bulanArray);
+        bulanCombo.setBounds(230, 180, 80, 20);
         this.add(bulanCombo);
 
-        tahunCombo = new JComboBox();
-        tahunCombo.setBounds(330, 150, 80, 20);
+        tahunLabel = new JLabel("Tahun");
+        tahunLabel.setBounds(330, 150, 80, 20);
+        this.add(tahunLabel);
+
+        tahunCombo = new JComboBox(tahunArray);
+        tahunCombo.setBounds(330, 180, 80, 20);
         this.add(tahunCombo);
 
         alamatLabel = new JLabel();
         alamatLabel.setText("Alamat");
-        alamatLabel.setBounds(50, 180, 80, 20);
+        alamatLabel.setBounds(50, 210, 80, 20);
         this.add(alamatLabel);
 
         alamatText = new JTextField();
-        alamatText.setBounds(130, 180, 120, 20);
+        alamatText.setBounds(130, 210, 120, 20);
         this.add(alamatText);
 
         nikLabel = new JLabel();
         nikLabel.setText("NIK");
-        nikLabel.setBounds(50, 210, 80, 20);
+        nikLabel.setBounds(50, 250, 80, 20);
         this.add(nikLabel);
 
         nikText = new JTextField();
-        nikText.setBounds(130, 210, 120, 20);
+        nikText.setBounds(130, 250, 120, 20);
         this.add(nikText);
 
         tambahButton = new JButton();
         tambahButton.setText("Tambah");
-        tambahButton.setBounds(130, 240, 80, 30);
+        tambahButton.setBounds(130, 280, 80, 30);
         this.add(tambahButton);
 
         tambahButton.addActionListener(this);
