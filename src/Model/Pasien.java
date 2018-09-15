@@ -270,7 +270,8 @@ public class Pasien {
 
     public static Pasien cariPasien(String NoRM) {
         for (int i = 0; i < daftarPasien.size(); i++) {
-            if (daftarPasien.get(i).getNoRekamMedis() == NoRM) {
+            if (NoRM == null ? daftarPasien.get(i).getNoRekamMedis() == null
+                    : NoRM.equals(daftarPasien.get(i).getNoRekamMedis())) {
                 return daftarPasien.get(i);
             }
         }

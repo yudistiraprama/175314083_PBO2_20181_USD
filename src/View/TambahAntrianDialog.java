@@ -89,8 +89,12 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == noRMText) {
             Pasien cari = Pasien.cariPasien(noRMText.getText());
-            namaText.setText(cari.getNama());
-            alamatText.setText(cari.getAlamat());
+            if (cari == null) {
+                JOptionPane.showMessageDialog(null, "Data Pasien Tidak Ada");
+            } else {
+                namaText.setText(cari.getNama());
+                alamatText.setText(cari.getAlamat());
+            }
         }
         if (ae.getSource() == tambahButton) {
             JOptionPane.showMessageDialog(null, "Nomor Antrian");
