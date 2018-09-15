@@ -76,15 +76,15 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         this.add(namaLabel);
 
         namaText = new JTextField();
-        namaText.setBounds(130, 90, 120, 20);
+        namaText.setBounds(150, 90, 120, 20);
         this.add(namaText);
 
         lakiRadio = new JRadioButton("Laki-laki");
-        lakiRadio.setBounds(130, 120, 80, 20);
+        lakiRadio.setBounds(150, 120, 80, 20);
         this.add(lakiRadio);
 
         perempuanRadio = new JRadioButton("Perempuan");
-        perempuanRadio.setBounds(220, 120, 100, 20);
+        perempuanRadio.setBounds(240, 120, 100, 20);
         this.add(perempuanRadio);
 
         ButtonGroup KelaminButonGroup = new ButtonGroup();
@@ -96,27 +96,27 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         this.add(tanggallahirLabel);
 
         tanggalLabel = new JLabel("Tanggal");
-        tanggalLabel.setBounds(130, 150, 80, 20);
+        tanggalLabel.setBounds(150, 150, 80, 20);
         this.add(tanggalLabel);
 
         tanggalCombo = new JComboBox(tanggalArray);
-        tanggalCombo.setBounds(130, 180, 80, 20);
+        tanggalCombo.setBounds(150, 180, 80, 20);
         this.add(tanggalCombo);
 
         bulanLabel = new JLabel("Bulan");
-        bulanLabel.setBounds(230, 150, 80, 20);
+        bulanLabel.setBounds(250, 150, 80, 20);
         this.add(bulanLabel);
 
         bulanCombo = new JComboBox(bulanArray);
-        bulanCombo.setBounds(230, 180, 80, 20);
+        bulanCombo.setBounds(250, 180, 80, 20);
         this.add(bulanCombo);
 
         tahunLabel = new JLabel("Tahun");
-        tahunLabel.setBounds(330, 150, 80, 20);
+        tahunLabel.setBounds(350, 150, 80, 20);
         this.add(tahunLabel);
 
         tahunCombo = new JComboBox(tahunArray);
-        tahunCombo.setBounds(330, 180, 80, 20);
+        tahunCombo.setBounds(350, 180, 80, 20);
         this.add(tahunCombo);
 
         alamatLabel = new JLabel();
@@ -125,7 +125,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         this.add(alamatLabel);
 
         alamatText = new JTextField();
-        alamatText.setBounds(130, 210, 120, 20);
+        alamatText.setBounds(150, 210, 120, 20);
         this.add(alamatText);
 
         nikLabel = new JLabel();
@@ -134,12 +134,12 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         this.add(nikLabel);
 
         nikText = new JTextField();
-        nikText.setBounds(130, 250, 120, 20);
+        nikText.setBounds(150, 250, 120, 20);
         this.add(nikText);
 
         tambahButton = new JButton();
         tambahButton.setText("Tambah");
-        tambahButton.setBounds(130, 280, 80, 30);
+        tambahButton.setBounds(150, 280, 80, 30);
         this.add(tambahButton);
 
         tambahButton.addActionListener(this);
@@ -153,6 +153,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
             baru.setNama(namaText.getText());
             baru.setAlamat(alamatText.getText());
             baru.setNoRekamMedis(nikText.getText());
+            
 
             Pasien.tambahPasienBaru(baru);
 

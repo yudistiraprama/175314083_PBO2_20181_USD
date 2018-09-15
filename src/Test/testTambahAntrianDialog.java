@@ -6,6 +6,7 @@
 package Test;
 
 import View.TambahAntrianDialog;
+import javax.swing.JFrame;
 
 /**
  *

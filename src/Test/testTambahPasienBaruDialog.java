@@ -6,6 +6,7 @@
 package Test;
 
 import View.TambahPasienBaruDialog;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,5 +17,6 @@ public class testTambahPasienBaruDialog {
         TambahPasienBaruDialog test = new TambahPasienBaruDialog();
         test.setSize(600, 400);
         test.setVisible(true);
+       
     }
 }
