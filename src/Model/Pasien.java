@@ -263,18 +263,34 @@ public class Pasien {
         return nomorRekamMEdis;
     }
 
+    /**
+     * method untuk menambahkan objek pasien ke arrayList daftarpasien
+     *
+     * @param pasien
+     */
     public static void tambahPasienBaru(Pasien pasien) {
+        //mengisi daftaPasien dengan objek pasien 
         daftarPasien.add(pasien);
 
     }
 
+    /**
+     * method untuk mencari object pasien berdasarkan nomor rekam medis
+     *
+     * @param NoRM
+     * @return
+     */
     public static Pasien cariPasien(String NoRM) {
+        //perulangan sebanyak indeks pada daftarpasien
         for (int i = 0; i < daftarPasien.size(); i++) {
+            //membandingkan data variabel NORM dengan nomor rekam medis dari object pasien indeks ke i
             if (NoRM == null ? daftarPasien.get(i).getNoRekamMedis() == null
                     : NoRM.equals(daftarPasien.get(i).getNoRekamMedis())) {
+                //apabila memenuhi kondisi if maka akan dilakukan pengembalian nilai daftarpasien indeks ke i
                 return daftarPasien.get(i);
             }
         }
+        //apabila data tidak cocok maka akan mengembalikan nilai null
         return null;
     }
 }
