@@ -79,7 +79,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         antriButton.setText("Antri");
         antriButton.setBounds(150, 180, 80, 30);
         this.add(antriButton);
- 
+
         noRMText.addActionListener(this);
         antriButton.addActionListener(this);
 
@@ -101,7 +101,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
             for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
                 if (cari == Pasien.daftarPasien.get(i)) {
                     JOptionPane.showMessageDialog(null, "Nomor Antrian Anda : " + (i + 1));
-                    
+
                     this.dispose();
                 }
             }
