@@ -22,6 +22,7 @@ public class Pasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
+    private String nik = noRekamMedis;
     public static ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
 
     /**
@@ -244,6 +245,14 @@ public class Pasien {
         }
     }
 
+    public String getNik() {
+        return nik;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
     /**
      * method untuk membuat nomor rekam medis yang terdiri dari tanggal pasien
      * mengatri ditambah 3 huruf pertama dari nama
@@ -284,9 +293,7 @@ public class Pasien {
         //perulangan sebanyak indeks pada daftarpasien
         for (int i = 0; i < daftarPasien.size(); i++) {
             //membandingkan data variabel NORM dengan nomor rekam medis dari object pasien indeks ke i
-            if (NoRM == null ? daftarPasien.get(i).getNoRekamMedis() == null
-                    : NoRM.equals(daftarPasien.get(i).getNoRekamMedis())) {
-                //apabila memenuhi kondisi if maka akan dilakukan pengembalian nilai daftarpasien indeks ke i
+            if (daftarPasien.get(i).noRekamMedis.equalsIgnoreCase(NoRM)) {
                 return daftarPasien.get(i);
             }
         }

@@ -47,8 +47,8 @@ public class MainTest {
             dok1.setTahunLahir(1975);
 
             antri.setKlinik(klinik);
-            antri.Mendaftar(pas1);
-            antri.Mendaftar(pas2);
+            antri.Mendaftar(pas1, pas1.getTanggalLahir(), pas1.getBulanLahir(), pas1.getTahunLahir());
+            antri.Mendaftar(pas2, pas2.getTanggalLahir(), pas2.getBulanLahir(), pas2.getTahunLahir());
 
         } catch (Exception ex) {
             ex.printStackTrace();
