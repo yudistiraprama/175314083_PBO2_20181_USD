@@ -9,8 +9,6 @@ import Model.Pasien;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -43,13 +41,13 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
     private JComboBox bulanCombo;
     private JComboBox tahunCombo;
     private JButton tambahButton;
-    private String tanggalArray[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
+    private String tanggalArray[] = {"Hari", "1", "2", "3", "4", "5", "6", "7", "8", "9",
         "10", "11", "12", "13", "14", "15", "16", "17", "18",
         "19", "20", "21", "22", "23", "24", "25", "26", "27",
         "28", "29", "30", "31"};
-    private String bulanArray[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
+    private String bulanArray[] = {"Bulan", "1", "2", "3", "4", "5", "6", "7", "8", "9",
         "10", "11", "12"};
-    private String tahunArray[] = {"1970", "1971", "1972", "1973", "1974", "1975",
+    private String tahunArray[] = {"Tahun", "1970", "1971", "1972", "1973", "1974", "1975",
         "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985",
         "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994",
         "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002"};
