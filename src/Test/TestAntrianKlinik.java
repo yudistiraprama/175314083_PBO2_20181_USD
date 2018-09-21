@@ -7,6 +7,7 @@ package Test;
 
 import Model.AntrianKlinik;
 import Model.Klinik;
+import Model.Pasien;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,44 +18,31 @@ import java.util.logging.Logger;
 public class TestAntrianKlinik {
 
     public static void main(String[] args) {
-        AntrianKlinik.buatAntrian(21, 9, 2019, new Klinik("001", "Anak"));
-        AntrianKlinik.buatAntrian(21, 9, 2019, new Klinik("001", "Saraf"));
-        AntrianKlinik.buatAntrian(21, 9, 2019, new Klinik("001", "Anak"));
-        
+        AntrianKlinik.buatAntrian(21, 9, 2018, new Klinik("001", "Anak"));
+        AntrianKlinik.buatAntrian(21, 9, 2018, new Klinik("002", "Saraf"));
+        AntrianKlinik.buatAntrian(21, 9, 2018, new Klinik("001", "Anak"));
+
         for (int i = 0; i < AntrianKlinik.daftarAntrian.size(); i++) {
             System.out.println(AntrianKlinik.daftarAntrian.get(i));
         }
-        
-//        AntrianKlinik test1 = new AntrianKlinik();
-//        try {
-//            test1.setTanggalAntrian(21);
-//            test1.setBulanAntrian(9);
-//            test1.setTahunAntrian(2018);
-//            test1.setKlinik(new Klinik("001", "Anak"));
-//        } catch (Exception ex) {
-//            Logger.getLogger(TestAntrianKlinik.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        AntrianKlinik test2 = new AntrianKlinik();
-//        try {
-//            test2.setTanggalAntrian(21);
-//            test2.setBulanAntrian(9);
-//            test2.setTahunAntrian(2018);
-//            test2.setKlinik(new Klinik("002", "Saraf"));
-//        } catch (Exception ex) {
-//            Logger.getLogger(TestAntrianKlinik.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        AntrianKlinik test3 = new AntrianKlinik();
-//        try {
-//            test3.setTanggalAntrian(21);
-//            test3.setBulanAntrian(9);
-//            test3.setTahunAntrian(2018);
-//            test3.setKlinik(new Klinik("002", "Saraf"));
-//        } catch (Exception ex) {
-//            Logger.getLogger(TestAntrianPasien.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
+
+        Pasien pas1 = new Pasien();
+        pas1.setNama("Puspa");
+        pas1.setAlamat("Klaten");
+
+        Pasien pas2 = new Pasien();
+        pas2.setNama("Adi");
+        pas2.setAlamat("Klaten");
+
+        int indeksAntrian = AntrianKlinik.cariAntrian(21, 9, 2018, new Klinik("001", "Saraf"));
+        if (indeksAntrian >= 0) {
+            AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas1);
+            AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas2);
+        }
+
+        for (int i = 0; i < AntrianKlinik.daftarAntrian.size(); i++) {
+            System.out.println(AntrianKlinik.daftarAntrian.get(i));
+        }
 
     }
 }

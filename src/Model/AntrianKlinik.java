@@ -31,101 +31,36 @@ public class AntrianKlinik {
 
     }
 
-    /**
-     * method untuk mengambil nilai dari variabel tanggalLahir
-     *
-     * @return
-     */
+    public AntrianKlinik(int tanggal, int bulan, int tahun, Klinik klinik) {
+        this.tanggalAntrian = tanggal;
+        this.bulanAntrian = bulan;
+        this.tahunAntrian = tahun;
+        this.klinik = klinik;
+
+    }
+
     public int getTanggalAntrian() {
-        //pengambalian nilai dari variabel tanggalLahir
-        return tahunAntrian;
+        return tanggalAntrian;
     }
 
-    /**
-     * method untuk meng-set nilai dari variabel tanggalLahir dengan variabel
-     * lokal tanggalLahir dengan tipe data String
-     *
-     * @param tanggalAntrian
-     * @throws Exception
-     */
-    public void setTanggalAntrian(int tanggalAntrian) throws Exception {
-        //pengecekan nilai variabel lokal tanggalLahir harus lebih dari 0
-        if (tanggalAntrian > 0) {
-            //pengecekan nilai variabel lokal tanggalLahir harus kurang dari atau sama dengan 31
-            if (tanggalAntrian <= 31) {
-                //pernyataan bahwa nilai dari variabel tanggalLahir sama dengan nilai dari variabel lokal tanggalLahir
-                this.tanggalAntrian = tanggalAntrian;
-            } else {
-                // pesan apabila input tanggalLahir lebih dari 31 
-                throw new Exception("Input Tanggal Lebih Dari 31");
-            }
-        } else {
-            // pesan apabila input tanggalLahir kurang dari 0 
-            throw new Exception("Input Tanggal Kurang Dari 0");
-        }
+    public void setTanggalAntrian(int tanggalAntrian) {
+        this.tanggalAntrian = tanggalAntrian;
     }
 
-    /**
-     * method untuk mengambil nilai dari variabel bulanLahir
-     *
-     * @return
-     */
     public int getBulanAntrian() {
-        // pengambalian nilai dari variabel bulanLahir
         return bulanAntrian;
     }
 
-    /**
-     * method untuk meng-set nilai dari variabel bulanLahir dengan variabel
-     * lokal bulanLahir dengan tipe data String
-     *
-     * @param bulanAntrian
-     * @throws Exception
-     */
-    public void setBulanAntrian(int bulanAntrian) throws Exception {
-        //pengecekan nilai variabel lokal bulanLahir harus lebih dari 0
-        if (bulanAntrian > 0) {
-            //pengecekan nilai variabel lokal bulanLahir harus kurang dari atau sama dengan 12
-            if (bulanAntrian <= 12) {
-                //pernyataan bahwa nilai dari variabel bulanLahir sama dengan nilai dari variabel lokal bulanLahir
-                this.bulanAntrian = bulanAntrian;
-            } else {
-                // pesan apabila input bulanLahir lebih dari 12
-                throw new Exception("Input Bulan Lebih Dari 12");
-            }
-        } else {
-            // pesan apabila input bulanLahir kurang dari 0 
-            throw new Exception("input Bulan Kurang Dari 0");
-        }
-
+    public void setBulanAntrian(int bulanAntrian) {
+        this.bulanAntrian = bulanAntrian;
     }
 
-    /**
-     * method untuk mengambil nilai dari variabel tahunLahir
-     *
-     * @return
-     */
     public int getTahunAntrian() {
-        // pengambalian nilai dari variabel tahunLahir
         return tahunAntrian;
     }
 
-    /**
-     * method untuk meng-set nilai dari variabel tahunLahir dengan variabel
-     * lokal tahunLahir dengan tipe data String
-     *
-     * @param tahunAntrian
-     * @throws Exception
-     */
-    public void setTahunAntrian(int tahunAntrian) throws Exception {
-        //pengecekan nilai variabel lokal tahunLahir harus lebih dari 0
-        if (tahunAntrian > 0) {
-            //pernyataan bahwa nilai dari variabel tahunLahir sama dengan nilai dari variabel lokal tahunLahir
-            this.tahunAntrian = tahunAntrian;
-        } else {
-            // pesan apabila input tahunLahir
-            throw new Exception("Salah Input Tahun");
-        }
+    public void setTahunAntrian(int tahunAntrian) {
+        this.tahunAntrian = tahunAntrian;
     }
 
     /**
@@ -191,8 +126,20 @@ public class AntrianKlinik {
         daftarPasienAntri.add(pasien);
     }
 
-    public static AntrianKlinik daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        return null;
+    public static void daftarPasien(int tanggal, int bulan, int tahun, Klinik klinik) {
+        int pas = cariAntrian(tanggal, bulan, tahun, klinik);
+        if (pas >= 0) {
+            
+
+        } else {
+            AntrianKlinik antrian = new AntrianKlinik();
+            antrian.setTanggalAntrian(tanggal);
+            antrian.setBulanAntrian(bulan);
+            antrian.setTahunAntrian(tahun);
+            antrian.setKlinik(klinik);
+            daftarAntrian.add(antrian);
+        }
+
     }
 
     public static Pasien CariPasien(String noRM, int tanggal, int bulan, int tahun) {
@@ -206,32 +153,30 @@ public class AntrianKlinik {
 
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         AntrianKlinik antrian = new AntrianKlinik();
-        try {
-            antrian.setTanggalAntrian(tanggal);
-            antrian.setBulanAntrian(bulan);
-            antrian.setTahunAntrian(tahun);
-            antrian.setKlinik(klinik);
-        } catch (Exception ex) {
-            Logger.getLogger(AntrianKlinik.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        antrian.setTanggalAntrian(tanggal);
+        antrian.setBulanAntrian(bulan);
+        antrian.setTahunAntrian(tahun);
+        antrian.setKlinik(klinik);
         // cari antrian dalam list daftar antri
-        if (cariAntrian(tanggal, bulan, tahun, klinik) == null) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
             // tambah dalam list antrian
             daftarAntrian.add(antrian);
         } else {
-            System.out.println("Antrian Sudah Ada");
+            System.out.println("Antrian " + klinik.getNama() + " Sudah Ada");
         }
     }
 
-    public static AntrianKlinik cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
+    public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggal
                     && daftarAntrian.get(i).getBulanAntrian() == bulan
-                    && daftarAntrian.get(i).getTahunAntrian() == tahun) {
-                return daftarAntrian.get(i);
+                    && daftarAntrian.get(i).getTahunAntrian() == tahun
+                    && daftarAntrian.get(i).getKlinik().getNama().equalsIgnoreCase(klinik.getNama())
+                    && daftarAntrian.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())) {
+                return i;
             }
         }
-        return null;
+        return -1;
     }
 
     public String toString() {
