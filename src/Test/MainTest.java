@@ -20,7 +20,7 @@ public class MainTest {
         Pasien pas1 = new Pasien("Prama");
         Pasien pas2 = new Pasien("Chaca");
         Dokter dok1 = new Dokter("Budiman");
-        AntrianPasien antri = new AntrianPasien();
+        AntrianKlinik antri = new AntrianKlinik();
         Klinik klinik = new Klinik("KTF.Far001", "KLINIK TONG FANG");
 
         try {
@@ -47,8 +47,8 @@ public class MainTest {
             dok1.setTahunLahir(1975);
 
             antri.setKlinik(klinik);
-            antri.Mendaftar(pas1, pas1.getTanggalLahir(), pas1.getBulanLahir(), pas1.getTahunLahir());
-            antri.Mendaftar(pas2, pas2.getTanggalLahir(), pas2.getBulanLahir(), pas2.getTahunLahir());
+            antri.Mendaftar(pas1);
+            antri.Mendaftar(pas2);
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -15,19 +15,19 @@ import java.util.logging.Logger;
  *
  * @author jarkom
  */
-public class AntrianPasien {
+public class AntrianKlinik {
 
     private int tanggalAntrian;
     private int bulanAntrian;
     private int tahunAntrian;
     private Klinik klinik;
-    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
-    public static ArrayList<AntrianPasien> daftarAntrian = new ArrayList<AntrianPasien>();
+    private ArrayList<Pasien> daftarPasienAntri = new ArrayList<Pasien>();
+    public static ArrayList<AntrianKlinik> daftarAntrian = new ArrayList<AntrianKlinik>();
 
     /**
      * constructor untuk mendeklarasikan objek AntrianPasien
      */
-    public AntrianPasien() {
+    public AntrianKlinik() {
 
     }
 
@@ -156,7 +156,7 @@ public class AntrianPasien {
      */
     public ArrayList<Pasien> getDaftarPasien() {
         //pengambalian nilai dari variabel daftarPasien
-        return daftarPasien;
+        return daftarPasienAntri;
     }
 
     /**
@@ -167,7 +167,7 @@ public class AntrianPasien {
      */
     public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
         // pernyataan bahwa nilai dari variabel daftarPasien sama dengan nilai dari variabel lokal daftarPasien
-        this.daftarPasien = daftarPasien;
+        this.daftarPasienAntri = daftarPasien;
     }
 
     /**
@@ -186,52 +186,59 @@ public class AntrianPasien {
      * Method untuk mendaftar pasien baru di nomor antrian
      *
      * @param pasien
-     * @param tanggal
-     * @param bulan
-     * @param tahun
      */
-    public void Mendaftar(Pasien pasien, int tanggal, int bulan, int tahun) {
-        try {
-            pasien.setTanggalLahir(tanggal);
-            pasien.setBulanLahir(bulan);
-            pasien.setTahunLahir(tahun);
-        } catch (Exception ex) {
-            Logger.getLogger(AntrianPasien.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        daftarPasien.add(pasien);
+    public void Mendaftar(Pasien pasien) {
+        daftarPasienAntri.add(pasien);
     }
 
-    public static AntrianPasien cariPasien(String noRM) {
-        for (int i = 0; i < daftarAntrian.size(); i++) {
-            if (daftarAntrian.get(i).daftarPasien.get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
-                return daftarAntrian.get(i);
-            }
-        }
+    public static AntrianKlinik daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
         return null;
     }
 
     public static Pasien CariPasien(String noRM, int tanggal, int bulan, int tahun) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
-            if (daftarAntrian.get(i).daftarPasien.get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
-                return daftarAntrian.get(i).daftarPasien.get(i);
+            if (daftarAntrian.get(i).daftarPasienAntri.get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
+                return daftarAntrian.get(i).daftarPasienAntri.get(i);
             }
         }
         return null;
     }
 
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
+        AntrianKlinik antrian = new AntrianKlinik();
+        try {
+            antrian.setTanggalAntrian(tanggal);
+            antrian.setBulanAntrian(bulan);
+            antrian.setTahunAntrian(tahun);
+            antrian.setKlinik(klinik);
+        } catch (Exception ex) {
+            Logger.getLogger(AntrianKlinik.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // cari antrian dalam list daftar antri
+        if (cariAntrian(tanggal, bulan, tahun, klinik) == null) {
+            // tambah dalam list antrian
+            daftarAntrian.add(antrian);
+        } else {
+            System.out.println("Antrian Sudah Ada");
+        }
+    }
+
+    public static AntrianKlinik cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
-            if (daftarAntrian.get(i).daftarPasien.get(i).getTanggalLahir() == tanggal
-                    && daftarAntrian.get(i).daftarPasien.get(i).getBulanLahir() == bulan
-                    && daftarAntrian.get(i).daftarPasien.get(i).getTahunLahir() == tahun) {
-
-                System.out.println("Nomor Antrian Anda  : " + (i + 1));
-            } else {
-                System.out.println("Data Tidak Ditemukan");
-
+            if (daftarAntrian.get(i).getTanggalAntrian() == tanggal
+                    && daftarAntrian.get(i).getBulanAntrian() == bulan
+                    && daftarAntrian.get(i).getTahunAntrian() == tahun) {
+                return daftarAntrian.get(i);
             }
         }
+        return null;
+    }
+
+    public String toString() {
+        return String.valueOf(tahunAntrian)
+                + String.valueOf(bulanAntrian)
+                + String.valueOf(tanggalAntrian)
+                + klinik.getIdKlinik() + klinik.getNama();
     }
 
 }
