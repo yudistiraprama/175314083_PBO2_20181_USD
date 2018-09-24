@@ -126,10 +126,10 @@ public class AntrianKlinik {
         daftarPasienAntri.add(pasien);
     }
 
-    public static void daftarPasien(int tanggal, int bulan, int tahun, Klinik klinik) {
-        int pas = cariAntrian(tanggal, bulan, tahun, klinik);
-        if (pas >= 0) {
-            
+    public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
+        int daftar = cariAntrian(tanggal, bulan, tahun, klinik);
+        if (daftar < 0) {
+            AntrianKlinik.daftarAntrian.get(daftar).Mendaftar(pasien);
 
         } else {
             AntrianKlinik antrian = new AntrianKlinik();

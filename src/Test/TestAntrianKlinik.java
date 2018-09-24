@@ -25,6 +25,7 @@ public class TestAntrianKlinik {
         for (int i = 0; i < AntrianKlinik.daftarAntrian.size(); i++) {
             System.out.println(AntrianKlinik.daftarAntrian.get(i));
         }
+        System.out.println("\n");
 
         Pasien pas1 = new Pasien();
         pas1.setNama("Puspa");
@@ -40,8 +41,8 @@ public class TestAntrianKlinik {
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas2);
         }
 
-        for (int i = 0; i < AntrianKlinik.daftarAntrian.size(); i++) {
-            System.out.println(AntrianKlinik.daftarAntrian.get(i));
+        for (int i = 0; i < AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().size(); i++) {
+            System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().get(i));
         }
 
     }
