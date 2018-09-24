@@ -24,10 +24,14 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
     private JLabel judulLabel;
     private JLabel namaLabel;
     private JLabel noRMLabel;
+    private JLabel tanggalLahirLabel;
     private JLabel alamatLabel;
     private JTextField namaText;
     private JTextField noRMText;
     private JTextField alamatText;
+    private JTextField tanggalText;
+    private JTextField bulanText;
+    private JTextField tahunText;
     private JButton antriButton;
 
     /**
@@ -98,19 +102,36 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         //menambah namatext ke TambahAntrianDialog
         this.add(namaText);
 
+        tanggalLahirLabel = new JLabel();
+        tanggalLahirLabel.setText("Tanggal Lahir");
+        tanggalLahirLabel.setBounds(50, 130, 80, 20);
+        this.add(tanggalLahirLabel);
+
+        tanggalText = new JTextField();
+        tanggalText.setBounds(150, 130, 30, 20);
+        this.add(tanggalText);
+
+        bulanText = new JTextField();
+        bulanText.setBounds(190, 130, 30, 20);
+        this.add(bulanText);
+
+        tahunText = new JTextField();
+        tahunText.setBounds(240, 130, 60, 20);
+        this.add(tahunText);
+
         // membuat object alamatlabel yang bertipe JLabel
         alamatLabel = new JLabel();
         // mengset text untuk objek alamatLabel
         alamatLabel.setText("Alamat");
         // mengatur posisi dan ukuran object
-        alamatLabel.setBounds(50, 130, 80, 20);
+        alamatLabel.setBounds(50, 160, 80, 20);
         //menambah alamatlabel ke TambahAntrianDialog
         this.add(alamatLabel);
 
         // membuat object alamattext yang bertipe JTextField
         alamatText = new JTextField();
         // mengatur posisi dan ukuran object
-        alamatText.setBounds(150, 130, 120, 20);
+        alamatText.setBounds(150, 160, 120, 20);
         //menambah alamattext ke TambahAntrianDialog
         this.add(alamatText);
 
@@ -119,7 +140,7 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
         // mengset text untuk objek antriButton
         antriButton.setText("Antri");
         // mengatur posisi dan ukuran object
-        antriButton.setBounds(150, 180, 80, 30);
+        antriButton.setBounds(150, 200, 80, 30);
         //menambah antributton ke TambahAntrianDialog
         this.add(antriButton);
 
@@ -150,6 +171,13 @@ public class TambahAntrianDialog extends JDialog implements ActionListener {
                 namaText.setText(cari.getNama());
                 //mengset alamattext dengan data dari variabel alamat dari object cari
                 alamatText.setText(cari.getAlamat());
+                String tanggal = String.valueOf(cari.getTanggalLahir());
+                String bulan = String.valueOf(cari.getBulanLahir());
+                String tahun = String.valueOf(cari.getTahunLahir());
+                tanggalText.setText(tanggal);
+                bulanText.setText(bulan);
+                tahunText.setText(tahun);
+
             }
         }
         // perbandingan apabila yang di klik adalah antriButton

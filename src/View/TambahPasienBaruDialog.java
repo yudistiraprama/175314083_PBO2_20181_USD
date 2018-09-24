@@ -9,6 +9,8 @@ import Model.Pasien;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -41,6 +43,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
     private JComboBox bulanCombo;
     private JComboBox tahunCombo;
     private JButton tambahButton;
+    private int tanggal[] = {1,2,3,4,5,6,7,8,9,10};
     private String tanggalArray[] = {"Hari", "1", "2", "3", "4", "5", "6", "7", "8", "9",
         "10", "11", "12", "13", "14", "15", "16", "17", "18",
         "19", "20", "21", "22", "23", "24", "25", "26", "27",
@@ -235,6 +238,16 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
             //mengset variabel nik untuk object baru
             baru.setNoRekamMedis(nikText.getText());
             //menambahkan object baru ke daftarpasien melalui method tambahpasienbaru
+            int tanggal = Integer.valueOf(tanggalCombo.getSelectedItem().toString());
+            int bulan = Integer.valueOf(bulanCombo.getSelectedObjects().toString());
+            int tahun = Integer.valueOf(tahunCombo.getSelectedObjects().toString());
+            try {
+                baru.setTahunLahir(tanggal);
+                baru.setBulanLahir(bulan);
+                baru.setTahunLahir(tahun);
+            } catch (Exception ex) {
+                Logger.getLogger(TambahPasienBaruDialog.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Pasien.tambahPasienBaru(baru);
             //menampilkan pesan 
             JOptionPane.showMessageDialog(null, "Data Anda Telah Ditambahkan");
