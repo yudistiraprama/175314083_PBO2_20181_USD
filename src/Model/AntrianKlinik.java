@@ -8,8 +8,6 @@ package Model;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -77,7 +75,7 @@ public class AntrianKlinik {
      * method untuk meng-set nilai dari variabel klinik dengan variabel lokal
      * klinik yang bertipe Klinik
      *
-     * @param nama
+     * @param klinik
      */
     public void setKlinik(Klinik klinik) {
         // pernyataan bahwa nilai dari variabel klinik sama dengan nilai dari variabel lokal klinik
@@ -98,7 +96,7 @@ public class AntrianKlinik {
      * method untuk meng-set nilai dari variabel daftarPasien dengan variabel
      * lokal daftar pasien yang bertipe ArrayList pasien
      *
-     * @param nama
+     * @param daftarPasien
      */
     public void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
         // pernyataan bahwa nilai dari variabel daftarPasien sama dengan nilai dari variabel lokal daftarPasien
@@ -127,9 +125,8 @@ public class AntrianKlinik {
     }
 
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        int daftar = cariAntrian(tanggal, bulan, tahun, klinik);
-        if (daftar < 0) {
-            AntrianKlinik.daftarAntrian.get(daftar).Mendaftar(pasien);
+        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
+            AntrianKlinik.daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
 
         } else {
             AntrianKlinik antrian = new AntrianKlinik();
@@ -139,13 +136,12 @@ public class AntrianKlinik {
             antrian.setKlinik(klinik);
             daftarAntrian.add(antrian);
         }
-
     }
 
-    public static Pasien CariPasien(String noRM, int tanggal, int bulan, int tahun) {
+    public static Pasien CariPasien(String noRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
-            if (daftarAntrian.get(i).daftarPasienAntri.get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
-                return daftarAntrian.get(i).daftarPasienAntri.get(i);
+            if (daftarAntrian.get(i).getDaftarPasien().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
+                return daftarAntrian.get(i).getDaftarPasien().get(i);
             }
         }
         return null;
@@ -179,6 +175,7 @@ public class AntrianKlinik {
         return -1;
     }
 
+    @Override
     public String toString() {
         return String.valueOf(tahunAntrian)
                 + String.valueOf(bulanAntrian)
