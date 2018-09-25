@@ -13,11 +13,10 @@ import javax.swing.JFrame;
  * @author jarkom
  */
 public class testTambahAntrianDialog {
+
     public static void main(String[] args) {
         TambahAntrianDialog test = new TambahAntrianDialog("ANTRIAN PASIEN");
         test.setSize(600, 500);
         test.setVisible(true);
-        
-       
     }
 }

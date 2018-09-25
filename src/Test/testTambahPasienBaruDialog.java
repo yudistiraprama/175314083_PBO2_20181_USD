@@ -13,10 +13,10 @@ import javax.swing.JFrame;
  * @author jarkom
  */
 public class testTambahPasienBaruDialog {
+
     public static void main(String[] args) {
         TambahPasienBaruDialog test = new TambahPasienBaruDialog();
         test.setSize(600, 400);
         test.setVisible(true);
-       
     }
 }

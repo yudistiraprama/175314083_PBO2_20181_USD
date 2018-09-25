@@ -13,10 +13,10 @@ import javax.swing.JFrame;
  * @author jarkom
  */
 public class TestMainFrame {
+
     public static void main(String[] args) {
         MainFrame test = new MainFrame();
         test.setSize(500, 400);
         test.setVisible(true);
-        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

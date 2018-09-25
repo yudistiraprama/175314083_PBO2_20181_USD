@@ -8,8 +8,6 @@ package Test;
 import Model.AntrianKlinik;
 import Model.Klinik;
 import Model.Pasien;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -34,16 +32,22 @@ public class TestAntrianKlinik {
         Pasien pas2 = new Pasien();
         pas2.setNama("Adi");
         pas2.setAlamat("Klaten");
+        
+        Pasien pas3 = new Pasien();
+        pas3.setNama("Budi");
+        pas3.setAlamat("Klaten");
 
         int indeksAntrian = AntrianKlinik.cariAntrian(21, 9, 2018, new Klinik("001", "Anak"));
         if (indeksAntrian >= 0) {
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas1);
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas2);
         }
-        
+
+        System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getKlinik().getIdKlinik()+", "+AntrianKlinik.daftarAntrian.get(indeksAntrian).getKlinik().getNama());
         for (int i = 0; i < AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().size(); i++) {
             System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().get(i).getNama());
         }
-
+        System.out.println("");
+        
     }
 }

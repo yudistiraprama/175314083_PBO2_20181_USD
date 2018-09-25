@@ -173,7 +173,7 @@ public class AntrianKlinik {
      * @param klinik
      */
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
 
         } else {
