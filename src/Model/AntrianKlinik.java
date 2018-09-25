@@ -14,7 +14,7 @@ import java.util.Date;
  * @author jarkom
  */
 public class AntrianKlinik {
-
+    
     private int tanggalAntrian;
     private int bulanAntrian;
     private int tahunAntrian;
@@ -26,37 +26,37 @@ public class AntrianKlinik {
      * constructor untuk mendeklarasikan objek AntrianPasien
      */
     public AntrianKlinik() {
-
+        
     }
-
+    
     public AntrianKlinik(int tanggal, int bulan, int tahun, Klinik klinik) {
         this.tanggalAntrian = tanggal;
         this.bulanAntrian = bulan;
         this.tahunAntrian = tahun;
         this.klinik = klinik;
-
+        
     }
-
+    
     public int getTanggalAntrian() {
         return tanggalAntrian;
     }
-
+    
     public void setTanggalAntrian(int tanggalAntrian) {
         this.tanggalAntrian = tanggalAntrian;
     }
-
+    
     public int getBulanAntrian() {
         return bulanAntrian;
     }
-
+    
     public void setBulanAntrian(int bulanAntrian) {
         this.bulanAntrian = bulanAntrian;
     }
-
+    
     public int getTahunAntrian() {
         return tahunAntrian;
     }
-
+    
     public void setTahunAntrian(int tahunAntrian) {
         this.tahunAntrian = tahunAntrian;
     }
@@ -123,21 +123,17 @@ public class AntrianKlinik {
     public void Mendaftar(Pasien pasien) {
         daftarPasienAntri.add(pasien);
     }
-
+    
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) > 0) {
             AntrianKlinik.daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
-
+            
         } else {
-            AntrianKlinik antrian = new AntrianKlinik();
-            antrian.setTanggalAntrian(tanggal);
-            antrian.setBulanAntrian(bulan);
-            antrian.setTahunAntrian(tahun);
-            antrian.setKlinik(klinik);
-            daftarAntrian.add(antrian);
+            buatAntrian(tanggal, bulan, tahun, klinik);
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
         }
     }
-
+    
     public static Pasien CariPasien(String noRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getDaftarPasien().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
@@ -146,7 +142,7 @@ public class AntrianKlinik {
         }
         return null;
     }
-
+    
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
@@ -159,9 +155,10 @@ public class AntrianKlinik {
             daftarAntrian.add(antrian);
         } else {
             System.out.println("Antrian " + klinik.getNama() + " Sudah Ada");
+            System.out.println("");
         }
     }
-
+    
     public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggal
@@ -174,7 +171,7 @@ public class AntrianKlinik {
         }
         return -1;
     }
-
+    
     @Override
     public String toString() {
         return String.valueOf(tahunAntrian)
@@ -182,5 +179,5 @@ public class AntrianKlinik {
                 + String.valueOf(tanggalAntrian)
                 + klinik.getIdKlinik() + klinik.getNama();
     }
-
+    
 }
