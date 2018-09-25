@@ -14,7 +14,7 @@ import java.util.Date;
  * @author jarkom
  */
 public class AntrianKlinik {
-    
+
     private int tanggalAntrian;
     private int bulanAntrian;
     private int tahunAntrian;
@@ -26,37 +26,76 @@ public class AntrianKlinik {
      * constructor untuk mendeklarasikan objek AntrianPasien
      */
     public AntrianKlinik() {
-        
+
     }
-    
+
+    /**
+     * constructor untuk meneklarasikan objek Antrian Pasien dengan parameter
+     * tanggal, bulan, tahun, dan klinik
+     *
+     * @param tanggal
+     * @param bulan
+     * @param tahun
+     * @param klinik
+     */
     public AntrianKlinik(int tanggal, int bulan, int tahun, Klinik klinik) {
         this.tanggalAntrian = tanggal;
         this.bulanAntrian = bulan;
         this.tahunAntrian = tahun;
         this.klinik = klinik;
-        
+
     }
-    
+
+    /**
+     * method untuk mengambil nilai dari atribut tanggalAntrian
+     *
+     * @return
+     */
     public int getTanggalAntrian() {
         return tanggalAntrian;
     }
-    
+
+    /**
+     * method untuk mengset nilai dari atribut tanggalAntrian
+     *
+     * @param tanggalAntrian
+     */
     public void setTanggalAntrian(int tanggalAntrian) {
         this.tanggalAntrian = tanggalAntrian;
     }
-    
+
+    /**
+     * method untuk mengambil nilai dari atribut bulanAntrian
+     *
+     * @return
+     */
     public int getBulanAntrian() {
         return bulanAntrian;
     }
-    
+
+    /**
+     * method untuk mengset nilai dari atribut bulanAntrian
+     *
+     * @param bulanAntrian
+     */
     public void setBulanAntrian(int bulanAntrian) {
         this.bulanAntrian = bulanAntrian;
     }
-    
+
+    /**
+     * method untuk mengambil nilai dari atribut tahunAntrian
+     *
+     * @return
+     */
     public int getTahunAntrian() {
         return tahunAntrian;
     }
-    
+
+    /**
+     * method untuk mengset nilai dari atribut tahunAntrian
+     *
+     * @param tahunAntrian
+     */
     public void setTahunAntrian(int tahunAntrian) {
         this.tahunAntrian = tahunAntrian;
     }
@@ -123,17 +162,33 @@ public class AntrianKlinik {
     public void Mendaftar(Pasien pasien) {
         daftarPasienAntri.add(pasien);
     }
-    
+
+    /**
+     * method untuk daftar pasien
+     *
+     * @param pasien
+     * @param tanggal
+     * @param bulan
+     * @param tahun
+     * @param klinik
+     */
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
         if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
-            AntrianKlinik.daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
-            
+            daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
+
         } else {
             buatAntrian(tanggal, bulan, tahun, klinik);
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
         }
     }
-    
+
+    /**
+     * method untuk mencari pasien dalam list daftarpasien yang terdapat di list
+     * daftarantrian
+     *
+     * @param noRM
+     * @return
+     */
     public static Pasien CariPasien(String noRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getDaftarPasien().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
@@ -142,7 +197,15 @@ public class AntrianKlinik {
         }
         return null;
     }
-    
+
+    /**
+     * menthod untuk membuat antrian dan ditambahka ke list daftarAntrian
+     *
+     * @param tanggal
+     * @param bulan
+     * @param tahun
+     * @param klinik
+     */
     public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
@@ -158,7 +221,16 @@ public class AntrianKlinik {
             System.out.println("");
         }
     }
-    
+
+    /**
+     * method untuk mencari antrian pada list daftar antrian
+     *
+     * @param tanggal
+     * @param bulan
+     * @param tahun
+     * @param klinik
+     * @return
+     */
     public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggal
@@ -171,7 +243,12 @@ public class AntrianKlinik {
         }
         return -1;
     }
-    
+
+    /**
+     * method untuk mengubah tipe data menjadi string
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return String.valueOf(tahunAntrian)
@@ -179,5 +256,5 @@ public class AntrianKlinik {
                 + String.valueOf(tanggalAntrian)
                 + klinik.getIdKlinik() + klinik.getNama();
     }
-    
+
 }
