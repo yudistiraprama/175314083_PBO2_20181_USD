@@ -173,7 +173,7 @@ public class AntrianKlinik {
      * @param klinik
      */
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
-        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0 ) {
+        if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0) {
             daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).Mendaftar(pasien);
 
         } else {
@@ -191,8 +191,12 @@ public class AntrianKlinik {
      */
     public static Pasien CariPasien(String noRM) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
-            if (daftarAntrian.get(i).getDaftarPasien().get(i).getNoRekamMedis().equalsIgnoreCase(noRM)) {
-                return daftarAntrian.get(i).getDaftarPasien().get(i);
+            if (daftarAntrian.get(i).getDaftarPasien().get(i) != null) {
+                for (int j = 0; j < daftarAntrian.get(i).getDaftarPasien().size(); j++) {
+                    if (daftarAntrian.get(i).getDaftarPasien().get(j).getNoRekamMedis().equalsIgnoreCase(noRM)) {
+                        return daftarAntrian.get(i).getDaftarPasien().get(j);
+                    }
+                }
             }
         }
         return null;

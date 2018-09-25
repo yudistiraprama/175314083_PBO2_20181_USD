@@ -27,21 +27,28 @@ public class TestAntrianKlinik {
 
         Pasien pas1 = new Pasien();
         pas1.setNama("Puspa");
+        pas1.setNoRekamMedis("1000");
         pas1.setAlamat("Klaten");
 
         Pasien pas2 = new Pasien();
         pas2.setNama("Adi");
+        pas2.setNoRekamMedis("1100");
         pas2.setAlamat("Klaten");
         
         Pasien pas3 = new Pasien();
         pas3.setNama("Budi");
+        pas3.setNoRekamMedis("1110");
         pas3.setAlamat("Klaten");
 
         int indeksAntrian = AntrianKlinik.cariAntrian(21, 9, 2018, new Klinik("001", "Anak"));
         if (indeksAntrian >= 0) {
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas1);
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas2);
+            AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas3);
         }
+        
+        System.out.println(AntrianKlinik.CariPasien("1110").getNama());
+        System.out.println("");
 
         System.out.println(AntrianKlinik.daftarAntrian.get(indeksAntrian).getKlinik().getIdKlinik()+", "+AntrianKlinik.daftarAntrian.get(indeksAntrian).getKlinik().getNama());
         for (int i = 0; i < AntrianKlinik.daftarAntrian.get(indeksAntrian).getDaftarPasien().size(); i++) {
