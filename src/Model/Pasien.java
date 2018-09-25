@@ -45,7 +45,7 @@ public class Pasien {
 
     public Pasien(String nama, String Alamat, String tempatLahir, int tanggal, int bulan, int tahun, String nik) {
         this.nama = nama;
-        this.alamat = alamat;
+        this.alamat = Alamat;
         this.tempatLahir = tempatLahir;
         this.tanggalLahir = tanggal;
         this.bulanLahir = bulan;
@@ -163,23 +163,11 @@ public class Pasien {
      * lokal tanggalLahir dengan tipe data String
      *
      * @param tanggalLahir
-     * @throws Exception
      */
-    public void setTanggalLahir(int tanggalLahir) throws Exception {
-        //pengecekan nilai variabel lokal tanggalLahir harus lebih dari 0
-        if (tanggalLahir > 0) {
-            //pengecekan nilai variabel lokal tanggalLahir harus kurang dari atau sama dengan 31
-            if (tanggalLahir <= 31) {
-                //pernyataan bahwa nilai dari variabel tanggalLahir sama dengan nilai dari variabel lokal tanggalLahir
-                this.tanggalLahir = tanggalLahir;
-            } else {
-                // pesan apabila input tanggalLahir lebih dari 31 
-                throw new Exception("Input Tanggal Lebih Dari 31");
-            }
-        } else {
-            // pesan apabila input tanggalLahir kurang dari 0 
-            throw new Exception("Input Tanggal Kurang Dari 0");
-        }
+    public void setTanggalLahir(int tanggalLahir) {
+        //pernyataan bahwa nilai dari variabel tanggalLahir sama dengan nilai dari variabel lokal tanggalLahir
+        this.tanggalLahir = tanggalLahir;
+
     }
 
     /**
@@ -197,24 +185,10 @@ public class Pasien {
      * lokal bulanLahir dengan tipe data String
      *
      * @param bulanLahir
-     * @throws Exception
      */
-    public void setBulanLahir(int bulanLahir) throws Exception {
-        //pengecekan nilai variabel lokal bulanLahir harus lebih dari 0
-        if (bulanLahir > 0) {
-            //pengecekan nilai variabel lokal bulanLahir harus kurang dari atau sama dengan 12
-            if (bulanLahir <= 12) {
-                //pernyataan bahwa nilai dari variabel bulanLahir sama dengan nilai dari variabel lokal bulanLahir
-                this.bulanLahir = bulanLahir;
-            } else {
-                // pesan apabila input bulanLahir lebih dari 12
-                throw new Exception("Input Bulan Lebih Dari 12");
-            }
-        } else {
-            // pesan apabila input bulanLahir kurang dari 0 
-            throw new Exception("input Bulan Kurang Dari 0");
-        }
-
+    public void setBulanLahir(int bulanLahir) {
+        //pernyataan bahwa nilai dari variabel bulanLahir sama dengan nilai dari variabel lokal bulanLahir
+        this.bulanLahir = bulanLahir;
     }
 
     /**
@@ -232,17 +206,10 @@ public class Pasien {
      * lokal tahunLahir dengan tipe data String
      *
      * @param tahunLahir
-     * @throws Exception
      */
-    public void setTahunLahir(int tahunLahir) throws Exception {
-        //pengecekan nilai variabel lokal tahunLahir harus lebih dari 0
-        if (tahunLahir > 0) {
-            //pernyataan bahwa nilai dari variabel tahunLahir sama dengan nilai dari variabel lokal tahunLahir
-            this.tahunLahir = tahunLahir;
-        } else {
-            // pesan apabila input tahunLahir
-            throw new Exception("Salah Input Tahun");
-        }
+    public void setTahunLahir(int tahunLahir) {
+        //pernyataan bahwa nilai dari variabel tahunLahir sama dengan nilai dari variabel lokal tahunLahir
+        this.tahunLahir = tahunLahir;
     }
 
     public String getNik() {

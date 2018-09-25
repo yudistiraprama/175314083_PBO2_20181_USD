@@ -43,17 +43,16 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
     private JComboBox bulanCombo;
     private JComboBox tahunCombo;
     private JButton tambahButton;
-    private int tanggal[] = {1,2,3,4,5,6,7,8,9,10};
-    private String tanggalArray[] = {"Hari", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-        "10", "11", "12", "13", "14", "15", "16", "17", "18",
-        "19", "20", "21", "22", "23", "24", "25", "26", "27",
-        "28", "29", "30", "31"};
-    private String bulanArray[] = {"Bulan", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-        "10", "11", "12"};
-    private String tahunArray[] = {"Tahun", "1970", "1971", "1972", "1973", "1974", "1975",
-        "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985",
-        "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994",
-        "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002"};
+    private final String tanggalArray[] = {"Hari", "1", "2", "3", "4", "5", "6",
+        "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+    private final String bulanArray[] = {"Bulan", "1", "2", "3", "4", "5", "6",
+        "7", "8", "9", "10", "11", "12"};
+    private final String tahunArray[] = {"Tahun", "1970", "1971", "1972", "1973",
+        "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982",
+        "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991",
+        "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000",
+        "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009"};
 
     /**
      * konstruktor TambahPasienBariDialog untuk membuat object
@@ -66,6 +65,8 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
     /**
      * konstruktor TambahPasienBariDialog untuk membuat object dengan parameter
      * lokal title yang bertipe string
+     *
+     * @param title
      */
     public TambahPasienBaruDialog(String title) {
         //mengset title dengan data dari variabel title
@@ -107,6 +108,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         namaText.setBounds(150, 90, 120, 20);
         //menambah namatext ke TambahPasienBaruDialog
         this.add(namaText);
+        namaText.addActionListener(this);
 
         //membuat objek lakiradio yang bertipe JRadioButton
         lakiRadio = new JRadioButton("Laki-laki");
@@ -114,6 +116,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         lakiRadio.setBounds(150, 120, 80, 20);
         //menambah lakiradio ke TambahPasienBaruDialog
         this.add(lakiRadio);
+        lakiRadio.addActionListener(this);
 
         //membuat objek perempuanradio yang bertipe JRadioButton
         perempuanRadio = new JRadioButton("Perempuan");
@@ -121,6 +124,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         perempuanRadio.setBounds(240, 120, 100, 20);
         //menambah perempuanradio ke TambahPasienBaruDialog
         this.add(perempuanRadio);
+        perempuanRadio.addActionListener(this);
 
         //membuat objek kelaminradiogroup yang bertipe ButtonGroup
         ButtonGroup KelaminButonGroup = new ButtonGroup();
@@ -148,6 +152,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         tanggalCombo.setBounds(150, 180, 80, 20);
         //menambah tanggalcombo ke TambahPasienBaruDialog
         this.add(tanggalCombo);
+        tanggalCombo.addActionListener(this);
 
         // membuat object bulanlabel yang bertipe JLabel
         bulanLabel = new JLabel("Bulan");
@@ -155,12 +160,13 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         bulanLabel.setBounds(250, 150, 80, 20);
         //menambah bulanlabel ke TambahPasienBaruDialog
         this.add(bulanLabel);
-
+        
         bulanCombo = new JComboBox(bulanArray);
         // mengatur posisi dan ukuran object
         bulanCombo.setBounds(250, 180, 80, 20);
         //menambah bulancombo ke TambahPasienBaruDialog
         this.add(bulanCombo);
+        bulanCombo.addActionListener(this);
 
         // membuat object tahunlabel yang bertipe JLabel
         tahunLabel = new JLabel("Tahun");
@@ -174,6 +180,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         tahunCombo.setBounds(350, 180, 80, 20);
         //menambah tahuncombo ke TambahPasienBaruDialog
         this.add(tahunCombo);
+        tahunCombo.addActionListener(this);
 
         // membuat object alamatlabel yang bertipe JLabel
         alamatLabel = new JLabel();
@@ -189,6 +196,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         alamatText.setBounds(150, 210, 120, 20);
         //menambah alamattext ke TambahPasienBaruDialog
         this.add(alamatText);
+        alamatText.addActionListener(this);
 
         // membuat object niklabel yang bertipe JLabel
         nikLabel = new JLabel();
@@ -205,6 +213,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
         nikText.setBounds(150, 250, 120, 20);
         //menambah niktext ke TambahPasienBaruDialog
         this.add(nikText);
+        nikText.addActionListener(this);
 
         //membuat object tambahbtton yang bertipe JButton
         tambahButton = new JButton();
@@ -239,15 +248,11 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener {
             baru.setNoRekamMedis(nikText.getText());
             //menambahkan object baru ke daftarpasien melalui method tambahpasienbaru
             int tanggal = Integer.valueOf(tanggalCombo.getSelectedItem().toString());
-            int bulan = Integer.valueOf(bulanCombo.getSelectedObjects().toString());
-            int tahun = Integer.valueOf(tahunCombo.getSelectedObjects().toString());
-            try {
-                baru.setTahunLahir(tanggal);
-                baru.setBulanLahir(bulan);
-                baru.setTahunLahir(tahun);
-            } catch (Exception ex) {
-                Logger.getLogger(TambahPasienBaruDialog.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            int bulan = Integer.valueOf(bulanCombo.getSelectedItem().toString());
+            int tahun = Integer.valueOf(tahunCombo.getSelectedItem().toString());
+            baru.setTanggalLahir(tanggal);
+            baru.setBulanLahir(bulan);
+            baru.setTahunLahir(tahun);
             Pasien.tambahPasienBaru(baru);
             //menampilkan pesan 
             JOptionPane.showMessageDialog(null, "Data Anda Telah Ditambahkan");

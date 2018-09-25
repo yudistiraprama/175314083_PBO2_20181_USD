@@ -35,7 +35,7 @@ public class TestAntrianKlinik {
         pas2.setNama("Adi");
         pas2.setAlamat("Klaten");
 
-        int indeksAntrian = AntrianKlinik.cariAntrian(21, 9, 2018, new Klinik("002", "Saraf"));
+        int indeksAntrian = AntrianKlinik.cariAntrian(21, 9, 2018, new Klinik("001", "Anak"));
         if (indeksAntrian >= 0) {
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas1);
             AntrianKlinik.daftarAntrian.get(indeksAntrian).Mendaftar(pas2);
