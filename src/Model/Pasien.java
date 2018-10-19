@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  * @author Asus
  */
 public class Pasien {
-    
+
     private String noRekamMedis;
     private String nama;
     private String alamat;
@@ -37,7 +37,7 @@ public class Pasien {
      * constructor untuk mendeklarasikan objek pasien
      */
     public Pasien() {
-        
+
     }
 
     /**
@@ -50,7 +50,7 @@ public class Pasien {
         // pernyataan bahwa nilai variabel nama sama dengan nilai dari variabel lokal nama
         this.nama = nama;
     }
-    
+
     public Pasien(String nama, String Alamat, String tempatLahir, int tanggal, int bulan, int tahun, String nik) {
         this.nama = nama;
         this.alamat = Alamat;
@@ -70,7 +70,7 @@ public class Pasien {
         //pengambalian nilai dari variabel noRekamMedis
         return noRekamMedis;
     }
-    
+
     public void setNoRekamMedis(String noRekamMedis) {
         this.noRekamMedis = noRekamMedis;
     }
@@ -175,7 +175,7 @@ public class Pasien {
     public void setTanggalLahir(int tanggalLahir) {
         //pernyataan bahwa nilai dari variabel tanggalLahir sama dengan nilai dari variabel lokal tanggalLahir
         this.tanggalLahir = tanggalLahir;
-        
+
     }
 
     /**
@@ -219,11 +219,11 @@ public class Pasien {
         //pernyataan bahwa nilai dari variabel tahunLahir sama dengan nilai dari variabel lokal tahunLahir
         this.tahunLahir = tahunLahir;
     }
-    
+
     public String getNik() {
         return nik;
     }
-    
+
     public void setNik(String nik) {
         this.nik = nik;
     }
@@ -246,11 +246,11 @@ public class Pasien {
         //pengembalian nilai variabel nomorRekamMedis
         return nomorRekamMEdis;
     }
-    
+
     public static ArrayList<Pasien> getDaftarPasien() {
         return daftarPasien;
     }
-    
+
     public static void setDaftarPasien(ArrayList<Pasien> daftarPasien) {
         Pasien.daftarPasien = daftarPasien;
     }
@@ -263,7 +263,7 @@ public class Pasien {
     public static void tambahPasienBaru(Pasien pasien) {
         //mengisi daftaPasien dengan objek pasien 
         daftarPasien.add(pasien);
-        
+
     }
 
     /**
@@ -283,9 +283,9 @@ public class Pasien {
         //apabila data tidak cocok maka akan mengembalikan nilai null
         return null;
     }
-    
+
     public static void simpanDaftarPasien(File file) {
-        
+
         try {
             FileOutputStream fos = new FileOutputStream(file);
             for (int i = 0; i < daftarPasien.size(); i++) {
@@ -299,7 +299,7 @@ public class Pasien {
             Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void bacaDaftarPasien(File file) throws IOException {
         FileInputStream fis = null;
         try {
@@ -311,19 +311,31 @@ public class Pasien {
             boolean isAlamat = false;
             Pasien temp = new Pasien();
             while ((dataInt = fis.read()) != -1) {
-                if ((char) dataInt != '\n') {
-                    if ((char) dataInt != '\t' && isNoRM == false) {
+                if (dataInt != '\n') {
+                    if (dataInt != '\t' && isNoRM == false) {
                         hasilBaca = hasilBaca + (char) dataInt;
-                    } else {
+                    } else if (dataInt == '\t' && isNoRM == false) {
                         isNoRM = true;
                         temp.setNoRekamMedis(hasilBaca);
+                        hasilBaca = "";
+                    } else if (dataInt != '\t' && isNoRM == true && isNama == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if (dataInt == '\t' && isNoRM == true && isNama == false) {
+                        isNama = true;
+                        temp.setNama(hasilBaca);
+                        hasilBaca = "";
+                    } else if (dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if (dataInt == '\t' && isNoRM == true && isNama == true && isAlamat == false) {
+                        isAlamat = true;
+                        temp.setAlamat(hasilBaca);
                         hasilBaca = "";
                     }
                 } else {
                     tambahPasienBaru(temp);
                 }
             }
-            System.out.println(hasilBaca);
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -335,9 +347,9 @@ public class Pasien {
                 Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }
-    
+
     @Override
     public String toString() {
         return noRekamMedis + "\t" + nama + "\t" + alamat + "\n";

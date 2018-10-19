@@ -19,7 +19,6 @@ public class TestStream2 {
         Pasien.bacaDaftarPasien(new File("daftar.txt"));
         for (int i = 0; i < Pasien.getDaftarPasien().size(); i++) {
             System.out.println(Pasien.getDaftarPasien().get(i).toString());
-
         }
     }
 }
