@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Test.TestStreaming1;
+import TestStream.TestStreaming1;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -310,29 +310,33 @@ public class Pasien {
             boolean isNama = false;
             boolean isAlamat = false;
             Pasien temp = new Pasien();
+
             while ((dataInt = fis.read()) != -1) {
-                if (dataInt != '\n') {
-                    if (dataInt != '\t' && isNoRM == false) {
+                if ((char) dataInt != '\n') {
+                    if ((char) dataInt != '\t' && isNoRM == false) {
                         hasilBaca = hasilBaca + (char) dataInt;
-                    } else if (dataInt == '\t' && isNoRM == false) {
-                        isNoRM = true;
+                    } else if ((char) dataInt == '\t' && isNoRM == false) {
                         temp.setNoRekamMedis(hasilBaca);
                         hasilBaca = "";
-                    } else if (dataInt != '\t' && isNoRM == true && isNama == false) {
+                        isNoRM = true;
+                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == false) {
                         hasilBaca = hasilBaca + (char) dataInt;
-                    } else if (dataInt == '\t' && isNoRM == true && isNama == false) {
-                        isNama = true;
+                    } else if ((char) dataInt == '\t' && isNoRM == true && isNama == false) {
                         temp.setNama(hasilBaca);
                         hasilBaca = "";
-                    } else if (dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
+                        isNama = true;
+                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
                         hasilBaca = hasilBaca + (char) dataInt;
-                    } else if (dataInt == '\t' && isNoRM == true && isNama == true && isAlamat == false) {
-                        isAlamat = true;
-                        temp.setAlamat(hasilBaca);
-                        hasilBaca = "";
                     }
                 } else {
-                    tambahPasienBaru(temp);
+                    temp.setAlamat(hasilBaca);
+                    hasilBaca = "";
+                    isAlamat = true;
+                    Pasien.tambahPasienBaru(temp);
+                    isNoRM = false;
+                    isNama = false;
+                    isAlamat = false;
+                    temp = new Pasien();
                 }
             }
 
@@ -352,6 +356,6 @@ public class Pasien {
 
     @Override
     public String toString() {
-        return noRekamMedis + "\t" + nama + "\t" + alamat + "\n";
+        return this.noRekamMedis + "\t" + this.nama + "\t" + this.alamat + "\n";
     }
 }
