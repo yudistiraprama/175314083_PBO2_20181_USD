@@ -93,22 +93,19 @@ public class RumahSakit implements Serializable {
         return null;
     }
 
-    public void buatAntrianKlinik(
-            int tanggal,
-            int bulan,
-            int tahun,
-            Klinik klinik) {
+    public void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         AntrianKlinik antrian = new AntrianKlinik();
         antrian.setTanggalAntrian(tanggal);
         antrian.setBulanAntrian(bulan);
         antrian.setTahunAntrian(tahun);
         antrian.setKlinik(klinik);
-        // cari antrian dalam list daftarAntri
-        if (cariAntrianKlinik(tanggal, bulan, tahun, klinik) < 0) {
+        // cari antrian dalam list daftar antri
+        if (cariAntrian(tanggal, bulan, tahun, klinik) < 0) {
             // tambah dalam list antrian
-            daftarAntrianKlinik.add(antrian);
+            daftarAntrian.add(antrian);
         } else {
-            System.out.println("antrian sudah ada");
+            System.out.println("Antrian " + klinik.getNama() + " Sudah Ada");
+            System.out.println("");
         }
     }
 
