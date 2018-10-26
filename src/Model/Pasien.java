@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Asus
  */
-public class Pasien {
+public class Pasien implements Serializable {
 
     private String noRekamMedis;
     private String nama;
@@ -313,21 +314,20 @@ public class Pasien {
 
             while ((dataInt = fis.read()) != -1) {
                 if ((char) dataInt != '\n') {
-                    if ((char) dataInt != '\t' && isNoRM == false) {
+                    if ((char) dataInt != '\t') {
                         hasilBaca = hasilBaca + (char) dataInt;
-                    } else if ((char) dataInt == '\t' && isNoRM == false) {
-                        temp.setNoRekamMedis(hasilBaca);
-                        hasilBaca = "";
-                        isNoRM = true;
-                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    } else if ((char) dataInt == '\t' && isNoRM == true && isNama == false) {
-                        temp.setNama(hasilBaca);
-                        hasilBaca = "";
-                        isNama = true;
-                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else {
+                        if (isNoRM == false) {
+                            temp.setNoRekamMedis(hasilBaca);
+                            isNoRM = true;
+                            hasilBaca = "";
+                        } else if (isNama == false) {
+                            temp.setNama(hasilBaca);
+                            isNama = true;
+                            hasilBaca = "";
+                        }
                     }
+
                 } else {
                     temp.setAlamat(hasilBaca);
                     hasilBaca = "";
@@ -341,14 +341,14 @@ public class Pasien {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 fis.close();
             } catch (IOException ex) {
-                Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
